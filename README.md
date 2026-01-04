@@ -1,42 +1,102 @@
-# Vibrant Tourism Website
+# Vibrant Tourism
 
-A professional, responsive website for Vibrant Tourism, a skill development and placement organization.
+A modern, scalable, component-based tourism website built with React, Vite, and Tailwind CSS.
 
-## Setup Instructions
+## 🏗️ Architecture
 
-1.  **Install Dependencies**:
-    ```bash
-    npm install
-    ```
+### Component Structure
+```
+src/
+├── components/
+│   ├── layout/          # Layout components (Navbar, MainLayout)
+│   ├── sections/        # Page sections (CategoryGrid, AboutSection, etc.)
+│   ├── ui/             # Reusable UI components (Button, etc.)
+│   └── index.js        # Component exports
+├── pages/              # Page components
+├── data/               # Mock data and configurations
+└── styles/             # Global styles
+```
 
-2.  **Start Development Server**:
-    ```bash
-    npm run dev
-    ```
-    Open [http://localhost:5173](http://localhost:5173) in your browser.
+### Key Features
+- **Component-based**: Atomic design principles with reusable components
+- **Framework-agnostic**: Clean separation allows easy framework switching
+- **Mobile-first**: Responsive design with Tailwind CSS
+- **Data-driven**: All content configurable via data objects
+- **Backend-ready**: Structured for API integration
 
-3.  **Build for Production**:
-    ```bash
-    npm run build
-    ```
+## 🚀 Components
 
-## Project Structure
+### Layout Components
+- **MainLayout**: Main page wrapper with navbar and footer
+- **Navbar**: Sticky navigation with mobile menu and scroll effects
 
--   `src/components`: Reusable UI components (Header, Navbar, Footer).
--   `src/pages`: Page components (Home, About, Services, etc.).
--   `src/styles`: CSS files.
--   `src/assets`: Images and icons.
+### Section Components
+- **CategoryGrid**: Responsive grid for tourism categories with hover effects
+- **SectionText**: Flexible text sections with configurable layouts
+- **AboutSection**: Two-column about section
+- **WhatWeDo**: Service cards with animations
 
-## Customization
+### UI Components
+- **Button**: Configurable button with multiple variants and sizes
 
--   **Content**: Edit the text directly in the page components in `src/pages/`.
--   **Colors**: Update CSS variables in `src/styles/variables.css`.
--   **Images**: Replace images in `src/assets/`.
+## 📱 Responsive Design
 
-## Features
+- **Desktop**: 3-column grid, full navigation
+- **Tablet**: 2-column grid, condensed layout
+- **Mobile**: Single column, hamburger menu
 
--   **Responsive Design**: Works on mobile, tablet, and desktop.
--   **Job Portal**: Browse and filter job listings.
--   **Resource Center**: Downloadable PDFs and videos.
--   **Events Calendar**: Upcoming events and workshops.
--   **Forms**: Functional forms for contact, demand aggregation, and newsletter (logs to console).
+## 🔧 Development
+
+```bash
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+```
+
+## 🎨 Customization
+
+### Colors
+Modify `tailwind.config.js` to update the color scheme:
+```js
+colors: {
+  primary: { /* Blue theme */ },
+  accent: { /* Orange accent */ }
+}
+```
+
+### Content
+Update `src/data/mockData.js` to modify:
+- Navigation menu items
+- Tourism categories
+- Service cards
+- Text content
+
+## 🔮 Future Backend Integration
+
+The architecture supports:
+- **CMS Integration**: Headless CMS for content management
+- **API Integration**: RESTful or GraphQL APIs
+- **Authentication**: User login and membership system
+- **Admin Dashboard**: Content and user management
+- **Media Management**: Image and video uploads
+- **Employment Portal**: Job listings and applications
+- **Course Management**: Skill development programs
+
+## 📦 Dependencies
+
+- React 18+ with React Router
+- Vite for build tooling
+- Tailwind CSS for styling
+- PostCSS and Autoprefixer
+
+## 🎯 Performance
+
+- Lazy loading ready
+- Component-level code splitting
+- Optimized images and assets
+- Minimal bundle size
