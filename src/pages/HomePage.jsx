@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import CategoryGrid from '../components/sections/CategoryGrid';
 import SectionText from '../components/sections/SectionText';
 import AboutSection from '../components/sections/AboutSection';
@@ -63,10 +64,10 @@ const HomePage = () => {
             <div className={`transform transition-all duration-1200 delay-700 ${
               heroVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
             }`}>
-              <Link href="/destinations">
-              <Button size="lg" variant="accent" className="transform hover:scale-105 shadow-xl animate-pulse">
-                Explore Destinations
-              </Button>
+              <Link to="/destination">
+                <Button size="lg" variant="accent" className="transform hover:scale-105 shadow-xl animate-pulse">
+                  Explore Destinations
+                </Button>
               </Link>
             </div>
           </div>
