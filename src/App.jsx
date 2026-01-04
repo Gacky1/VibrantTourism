@@ -1,9 +1,23 @@
+import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import MainLayout from './components/layout/MainLayout';
 import HomePage from './pages/HomePage';
+import DestinationPage from './pages/DestinationPage';
+import EducationPage from './pages/EducationPage';
+import Loader from './components/ui/Loader';
 import './styles/globals.css';
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  const handleLoadingComplete = () => {
+    setIsLoading(false);
+  };
+
+  if (isLoading) {
+    return <Loader onComplete={handleLoadingComplete} />;
+  }
+
   return (
     <Router>
       <Routes>
@@ -15,12 +29,11 @@ function App() {
             </MainLayout>
           } 
         />
-        {/* Future routes */}
         <Route 
           path="/destination" 
           element={
             <MainLayout activeRoute="/destination">
-              <div className="py-20 text-center">Destination Page - Coming Soon</div>
+              <DestinationPage />
             </MainLayout>
           } 
         />
@@ -28,7 +41,7 @@ function App() {
           path="/education" 
           element={
             <MainLayout activeRoute="/education">
-              <div className="py-20 text-center">Education Page - Coming Soon</div>
+              <EducationPage />
             </MainLayout>
           } 
         />

@@ -5,10 +5,10 @@ export const navigationMenu = [
   { id: 'education', label: 'EDUCATION', href: '/education' },
   { id: 'skill-education', label: 'SKILL EDUCATION', href: '/skill-education' },
   { id: 'upskilling', label: 'UPSKILLING', href: '/upskilling' },
-  { id: 'employment', label: 'Employment Opportunity', href: '/employment' },
+  { id: 'employment', label: 'EMPLOYMENT OPPORTUNITY', href: '/employment' },
   { id: 'membership', label: 'MEMBERSHIP', href: '/membership' },
   { id: 'media', label: 'MEDIA', href: '/media' },
-  { id: 'contact', label: 'Contact Us', href: '/contact' },
+  { id: 'contact', label: 'CONTACT US', href: '/contact' },
 ];
 
 // Tourism categories with high-quality images
@@ -118,6 +118,89 @@ export const boardMembers = [
     image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face'
   },
 ];
+
+// Education page data
+export const educationData = {
+  title: "LEARN FOR EVERY TOURISM OPPORTUNITY",
+  subtitle: "Education & Training Programs",
+  introduction: {
+    title: "Course Introduction",
+    content: "Education forms the foundation of a skilled, competitive, and future-ready tourism workforce. At Vibrant Tourism (VTC), we promote a wide range of education and training programs that equip students, professionals, and aspiring industry entrants with the practical knowledge and competencies needed to excel across all tourism sectors — from hospitality and food services to travel management, sustainable tourism, and cultural promotion."
+  },
+  objectives: [
+    "Support tourism industry growth",
+    "Develop skilled manpower for hospitality and allied sectors",
+    "Link academic knowledge with real-world tourism opportunities",
+    "Encourage entrepreneurship and MSME development",
+    "Promote inclusive and sustainable tourism models"
+  ],
+  courses: [
+    {
+      id: 1,
+      title: "Hospitality & Hotel Management",
+      icon: "fa-hotel",
+  logo: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&h=600&fit=crop&crop=center&q=80",
+      description: "Comprehensive training in hotel operations, guest services, and hospitality excellence",
+      color: "from-blue-500 to-blue-600"
+    },
+    {
+      id: 2,
+      title: "Tourism & Travel Management",
+      icon: "fa-plane",
+      logo: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800&h=600&fit=crop&crop=center&q=80",
+      description: "Strategic planning and management of tourism operations and travel services",
+      color: "from-purple-500 to-purple-600"
+    },
+    {
+      id: 3,
+      title: "Food Processing & Culinary Technology",
+      icon: "fa-utensils",
+      logo: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=600&fit=crop&crop=center&q=80",
+      description: "Advanced culinary techniques and food processing technologies",
+      color: "from-green-500 to-green-600"
+    },
+    {
+      id: 4,
+      title: "Food Safety & Food Technology",
+      icon: "fa-shield-alt",
+      logo: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&h=600&fit=crop&crop=center&q=80",
+      description: "Ensuring food safety standards and implementing modern food technologies",
+      color: "from-orange-500 to-orange-600"
+    },
+    {
+      id: 5,
+      title: "Wellness & AYUSH Tourism Course",
+      icon: "fa-leaf",
+      logo: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&h=600&fit=crop&crop=center&q=80",
+      description: "Integrating traditional wellness practices with modern tourism experiences",
+      color: "from-emerald-500 to-emerald-600"
+    }
+  ]
+};
+
+// Tourism contribution data
+export const tourismContribution = {
+  title: "CONTRIBUTION OF EACH TYPE OF TOURISM IN THE GROWTH OF INDIA",
+  statistics: {
+    jobs: "46.5 million",
+    year: "2024",
+    source: "India Brand Equity Foundation"
+  },
+  quotes: [
+    {
+      text: "According to IBEF, India's tourism and hospitality sector supported over 46.5 million jobs in 2024 and continues to grow as a major contributor to national employment and economic activity.",
+      source: "India Brand Equity Foundation"
+    },
+    {
+      text: "Statista reports that the tourism industry's direct contribution to India's GDP is significant with continued growth projected through 2034.",
+      source: "Statista"
+    }
+  ],
+  cta: {
+    text: "Explore Types of Tourism",
+    href: "/destination"
+  }
+};
 
 // Content sections
 export const sectionContent = {
