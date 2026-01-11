@@ -4,6 +4,7 @@ import MainLayout from './components/layout/MainLayout';
 import HomePage from './pages/HomePage';
 import DestinationPage from './pages/DestinationPage';
 import EducationPage from './pages/EducationPage';
+import SkillEducationPage from './pages/SkillEducationPage';
 import Loader from './components/ui/Loader';
 import './styles/globals.css';
 
@@ -42,6 +43,14 @@ function App() {
           element={
             <MainLayout activeRoute="/education">
               <EducationPage />
+            </MainLayout>
+          } 
+        />
+        <Route 
+          path="/skill-education" 
+          element={
+            <MainLayout activeRoute="/skill-education">
+              <SkillEducationPage />
             </MainLayout>
           } 
         />

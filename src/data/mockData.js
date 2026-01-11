@@ -178,6 +178,115 @@ export const educationData = {
   ]
 };
 
+// Skill Education page data
+export const skillEducationData = {
+  title: "SKILL EDUCATION",
+  subtitle: "Skill Education in Tourism & Hospitality",
+  introduction: {
+    content: "The tourism and hospitality sector is one of the largest employment generators in India, contributing significantly to GDP, foreign exchange earnings, and regional development. This sector's rapid growth is creating a strong demand for skilled, job-ready manpower across entry-level, supervisory, and managerial roles. Skill education in tourism focuses on practical, competency-based training aligned with industry needs rather than only academic learning. It equips youth and working professionals with technical, behavioral, digital, and service-oriented skills required in real-world tourism operations."
+  },
+  description: "Vibrant Tourism strategically connects industry demand with skilled human capital in a structured and outcome-driven manner, ensuring measurable impact across the tourism and hospitality sector. By integrating insights from national skill gap studies, employer feedback, and emerging industry trends, Vibrant tourism designs and promotes skill initiatives that directly respond to real workforce requirements.",
+  vtcEnables: [
+    "Industry-aligned curricula and short-term certification programs tailored to operational needs",
+    "Recruit–Train–Deploy (RTD) and On-the-Job Training (OJT) models to reduce hiring and training gaps",
+    "Industry–academia collaboration for internships, live projects, and placement-linked training",
+    "Continuous upskilling pathways to address technology adoption, service excellence, and evolving guest expectations"
+  ],
+  skillPrograms: [
+    {
+      id: 1,
+      title: "Front Office & Guest Relations Executive",
+      category: "Hospitality Operations",
+      image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&h=600&fit=crop&crop=center&q=80",
+      color: "from-blue-500 to-blue-600"
+    },
+    {
+      id: 2,
+      title: "Hotel Operations & Supervisory Skills",
+      category: "Management",
+      image: "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&h=600&fit=crop&crop=center&q=80",
+      color: "from-purple-500 to-purple-600"
+    },
+    {
+      id: 3,
+      title: "Housekeeping Operations & Facility Management",
+      category: "Operations",
+      image: "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=800&h=600&fit=crop&crop=center&q=80",
+      color: "from-green-500 to-green-600"
+    },
+    {
+      id: 4,
+      title: "Food & Beverage Service Associate",
+      category: "F&B Service",
+      image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=600&fit=crop&crop=center&q=80",
+      color: "from-orange-500 to-orange-600"
+    },
+    {
+      id: 5,
+      title: "Culinary Skills & Kitchen Operations",
+      category: "Culinary",
+      image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=600&fit=crop&crop=center&q=80",
+      color: "from-red-500 to-red-600"
+    },
+    {
+      id: 6,
+      title: "Hygiene, Food Safety & Quality Management",
+      category: "Quality Assurance",
+      image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&h=600&fit=crop&crop=center&q=80",
+      color: "from-teal-500 to-teal-600"
+    },
+    {
+      id: 7,
+      title: "Tour Guide & Tour Escort Certification",
+      category: "Tourism Services",
+      image: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800&h=600&fit=crop&crop=center&q=80",
+      color: "from-indigo-500 to-indigo-600"
+    },
+    {
+      id: 8,
+      title: "Travel Consultant & Ticketing Executive",
+      category: "Travel Services",
+      image: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800&h=600&fit=crop&crop=center&q=80",
+      color: "from-pink-500 to-pink-600"
+    },
+    {
+      id: 9,
+      title: "Destination Management & Sustainable Tourism",
+      category: "Destination Management",
+      image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800&h=600&fit=crop&crop=center&q=80",
+      color: "from-emerald-500 to-emerald-600"
+    },
+    {
+      id: 10,
+      title: "Wellness, AYUSH & Medical Tourism Coordinator",
+      category: "Wellness Tourism",
+      image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&h=600&fit=crop&crop=center&q=80",
+      color: "from-cyan-500 to-cyan-600"
+    },
+    {
+      id: 11,
+      title: "Digital Marketing for Tourism Businesses",
+      category: "Digital Skills",
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop&crop=center&q=80",
+      color: "from-violet-500 to-violet-600"
+    },
+    {
+      id: 12,
+      title: "Tourism Entrepreneurship & Startup Management",
+      category: "Entrepreneurship",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&fit=crop&crop=center&q=80",
+      color: "from-amber-500 to-amber-600"
+    },
+    {
+      id: 13,
+      title: "Customer Experience & Service Excellence",
+      category: "Service Excellence",
+      image: "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&h=600&fit=crop&crop=center&q=80",
+      color: "from-rose-500 to-rose-600"
+    }
+  ]
+};
+
 // Tourism contribution data
 export const tourismContribution = {
   title: "CONTRIBUTION OF EACH TYPE OF TOURISM IN THE GROWTH OF INDIA",
