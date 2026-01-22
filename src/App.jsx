@@ -8,6 +8,7 @@ import SkillEducationPage from './pages/SkillEducationPage';
 import UpskillingPage from './pages/UpskillingPage';
 import ContactPage from './pages/ContactPage';
 import MembershipPage from './pages/MembershipPage';
+import EmploymentPage from './pages/EmploymentPage';
 import Loader from './components/ui/Loader';
 import './styles/globals.css';
 
@@ -78,6 +79,14 @@ function App() {
           element={
             <MainLayout activeRoute="/membership">
               <MembershipPage />
+            </MainLayout>
+          } 
+        />
+        <Route 
+          path="/employment" 
+          element={
+            <MainLayout activeRoute="/employment">
+              <EmploymentPage />
             </MainLayout>
           } 
         />
