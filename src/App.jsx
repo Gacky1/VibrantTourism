@@ -7,6 +7,7 @@ import EducationPage from './pages/EducationPage';
 import SkillEducationPage from './pages/SkillEducationPage';
 import UpskillingPage from './pages/UpskillingPage';
 import ContactPage from './pages/ContactPage';
+import MembershipPage from './pages/MembershipPage';
 import Loader from './components/ui/Loader';
 import './styles/globals.css';
 
@@ -69,6 +70,14 @@ function App() {
           element={
             <MainLayout activeRoute="/contact">
               <ContactPage />
+            </MainLayout>
+          } 
+        />
+        <Route 
+          path="/membership" 
+          element={
+            <MainLayout activeRoute="/membership">
+              <MembershipPage />
             </MainLayout>
           } 
         />
