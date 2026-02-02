@@ -9,6 +9,7 @@ import UpskillingPage from './pages/UpskillingPage';
 import ContactPage from './pages/ContactPage';
 import MembershipPage from './pages/MembershipPage';
 import EmploymentPage from './pages/EmploymentPage';
+import MediaPage from './pages/MediaPage';
 import Loader from './components/ui/Loader';
 import './styles/globals.css';
 
@@ -26,69 +27,77 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route 
-          path="/" 
+        <Route
+          path="/"
           element={
             <MainLayout activeRoute="/">
               <HomePage />
             </MainLayout>
-          } 
+          }
         />
-        <Route 
-          path="/destination" 
+        <Route
+          path="/destination"
           element={
             <MainLayout activeRoute="/destination">
               <DestinationPage />
             </MainLayout>
-          } 
+          }
         />
-        <Route 
-          path="/education" 
+        <Route
+          path="/education"
           element={
             <MainLayout activeRoute="/education">
               <EducationPage />
             </MainLayout>
-          } 
+          }
         />
-        <Route 
-          path="/skill-education" 
+        <Route
+          path="/skill-education"
           element={
             <MainLayout activeRoute="/skill-education">
               <SkillEducationPage />
             </MainLayout>
-          } 
+          }
         />
-        <Route 
-          path="/upskilling" 
+        <Route
+          path="/upskilling"
           element={
             <MainLayout activeRoute="/upskilling">
               <UpskillingPage />
             </MainLayout>
-          } 
+          }
         />
-        <Route 
-          path="/contact" 
+        <Route
+          path="/contact"
           element={
             <MainLayout activeRoute="/contact">
               <ContactPage />
             </MainLayout>
-          } 
+          }
         />
-        <Route 
-          path="/membership" 
+        <Route
+          path="/membership"
           element={
             <MainLayout activeRoute="/membership">
               <MembershipPage />
             </MainLayout>
-          } 
+          }
         />
-        <Route 
-          path="/employment" 
+        <Route
+          path="/employment"
           element={
             <MainLayout activeRoute="/employment">
               <EmploymentPage />
             </MainLayout>
-          } 
+          }
+        />
+        <Route
+          path="/media"
+          element={
+            <MainLayout activeRoute="/media">
+              <MediaPage />
+            </MainLayout>
+          }
         />
         {/* Add more routes as needed */}
       </Routes>
