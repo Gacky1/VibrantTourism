@@ -51,12 +51,34 @@ src/
 # Install dependencies
 npm install
 
-# Start development server
+# Install backend dependencies
+cd backend
+npm install
+cd ..
+
+# Start development server (Frontend)
 npm run dev
+
+# Start backend server (in separate terminal)
+cd backend
+npm start
 
 # Build for production
 npm run build
 ```
+
+## 🔐 Admin Panel
+
+### Access
+- **URL**: http://localhost:5173/admin
+- **Username**: `admin`
+- **Password**: `admin@123`
+
+### Features
+- Session-based authentication
+- Protected dashboard routes
+- Logout functionality
+- Ready for content management integration
 
 ## 🎨 Customization
 
@@ -89,10 +111,16 @@ The architecture supports:
 
 ## 📦 Dependencies
 
+### Frontend
 - React 18+ with React Router
 - Vite for build tooling
 - Tailwind CSS for styling
 - PostCSS and Autoprefixer
+
+### Backend
+- Express.js for server
+- Express-session for authentication
+- CORS for cross-origin requests
 
 ## 🎯 Performance
 

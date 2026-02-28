@@ -10,6 +10,8 @@ import ContactPage from './pages/ContactPage';
 import MembershipPage from './pages/MembershipPage';
 import EmploymentPage from './pages/EmploymentPage';
 import MediaPage from './pages/MediaPage';
+import AdminLogin from './pages/AdminLogin';
+import AdminDashboard from './pages/AdminDashboard';
 import Loader from './components/ui/Loader';
 import './styles/globals.css';
 
@@ -99,7 +101,8 @@ function App() {
             </MainLayout>
           }
         />
-        {/* Add more routes as needed */}
+        <Route path="/admin" element={<AdminLogin />} />
+        <Route path="/admin/dashboard" element={<AdminDashboard />} />
       </Routes>
     </Router>
   );
