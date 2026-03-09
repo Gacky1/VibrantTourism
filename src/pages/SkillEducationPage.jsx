@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from 'react';
-import { skillEducationData } from '../data/mockData';
 import Button from '../components/ui/Button';
 
 const SkillEducationPage = () => {
@@ -7,12 +6,18 @@ const SkillEducationPage = () => {
   const [introVisible, setIntroVisible] = useState(false);
   const [programsVisible, setProgramsVisible] = useState(false);
   const [vtcVisible, setVtcVisible] = useState(false);
+  const [skillEducationData, setSkillEducationData] = useState(null);
   const introRef = useRef(null);
   const programsRef = useRef(null);
   const vtcRef = useRef(null);
 
   useEffect(() => {
     setHeroVisible(true);
+
+    fetch('/api/content/all')
+      .then(res => res.json())
+      .then(data => setSkillEducationData(data.skillEducationData))
+      .catch(err => console.error('Failed to fetch:', err));
 
     const observers = [
       {
@@ -50,6 +55,8 @@ const SkillEducationPage = () => {
       observerInstances.forEach(observer => observer.disconnect());
     };
   }, []);
+
+  if (!skillEducationData) return <div className="min-h-screen flex items-center justify-center"><div className="text-2xl">Loading...</div></div>;
 
   return (
     <div className="min-h-screen">

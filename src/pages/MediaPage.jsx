@@ -10,6 +10,10 @@ const MediaPage = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [galleryFilter, setGalleryFilter] = useState('all');
+  const [events, setEvents] = useState([]);
+  const [articles, setArticles] = useState([]);
+  const [galleryImages, setGalleryImages] = useState([]);
+  const [testimonials, setTestimonials] = useState([]);
 
   const eventsRef = useRef(null);
   const articlesRef = useRef(null);
@@ -18,6 +22,18 @@ const MediaPage = () => {
 
   useEffect(() => {
     setHeroVisible(true);
+
+    fetch('/api/content/all')
+      .then(res => res.json())
+      .then(data => {
+        if (data.mediaData) {
+          setEvents(data.mediaData.events || []);
+          setArticles(data.mediaData.articles || []);
+          setGalleryImages(data.mediaData.galleryImages || []);
+          setTestimonials(data.mediaData.testimonials || []);
+        }
+      })
+      .catch(err => console.error('Failed to fetch:', err));
 
     const observers = [
       { ref: eventsRef, setter: setEventsVisible },
@@ -43,227 +59,34 @@ const MediaPage = () => {
       return observer;
     });
 
-    // Auto-rotate testimonials
-    const testimonialInterval = setInterval(() => {
-      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
-    }, 5000);
-
-    return () => {
-      observerInstances.forEach(observer => observer.disconnect());
-      clearInterval(testimonialInterval);
-    };
-  }, []);
-
-  const events = [
-    {
-      id: 1,
-      title: 'Cultural Heritage Festival 2026',
-      date: 'March 15-17, 2026',
-      location: 'New Delhi',
-      category: 'Culture',
-      image: 'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=800&h=600&fit=crop',
-      description: 'Experience the vibrant colors and traditions of India\'s rich cultural heritage.',
-      color: 'from-purple-500 to-pink-500'
-    },
-    {
-      id: 2,
-      title: 'Tourism Industry Summit',
-      date: 'April 5-7, 2026',
-      location: 'Mumbai',
-      category: 'Conference',
-      image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=600&fit=crop',
-      description: 'Join industry leaders to discuss the future of sustainable tourism.',
-      color: 'from-blue-500 to-cyan-500'
-    },
-    {
-      id: 3,
-      title: 'Adventure Tourism Workshop',
-      date: 'May 20-22, 2026',
-      location: 'Manali',
-      category: 'Adventure',
-      image: 'https://images.unsplash.com/photo-1551632811-561732d1e306?w=800&h=600&fit=crop',
-      description: 'Learn essential skills for adventure tourism and outdoor activities.',
-      color: 'from-orange-500 to-red-500'
-    },
-    {
-      id: 4,
-      title: 'Wellness & Yoga Retreat',
-      date: 'June 10-15, 2026',
-      location: 'Rishikesh',
-      category: 'Wellness',
-      image: 'https://images.unsplash.com/photo-1545389336-cf090694435e?w=800&h=600&fit=crop',
-      description: 'Rejuvenate your mind and body in the yoga capital of the world.',
-      color: 'from-green-500 to-teal-500'
-    },
-    {
-      id: 5,
-      title: 'Food & Culinary Tour',
-      date: 'July 8-10, 2026',
-      location: 'Jaipur',
-      category: 'Culinary',
-      image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&h=600&fit=crop',
-      description: 'Discover the flavors of Rajasthan through authentic culinary experiences.',
-      color: 'from-amber-500 to-yellow-500'
-    },
-    {
-      id: 6,
-      title: 'Photography Expedition',
-      date: 'August 15-20, 2026',
-      location: 'Ladakh',
-      category: 'Photography',
-      image: 'https://images.unsplash.com/photo-1452421822248-d4c2b47f0c81?w=800&h=600&fit=crop',
-      description: 'Capture stunning landscapes with professional photography guidance.',
-      color: 'from-indigo-500 to-purple-500'
+    if (testimonials.length > 0) {
+      const testimonialInterval = setInterval(() => {
+        setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+      }, 5000);
+      return () => {
+        observerInstances.forEach(observer => observer.disconnect());
+        clearInterval(testimonialInterval);
+      };
     }
-  ];
-
-  const articles = [
-    {
-      id: 1,
-      title: 'The Future of Sustainable Tourism in India',
-      excerpt: 'Exploring how eco-friendly practices are reshaping the tourism industry and creating positive impacts on local communities.',
-      author: 'Dr. Priya Sharma',
-      date: 'January 25, 2026',
-      readTime: '8 min read',
-      image: 'https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=800&h=600&fit=crop',
-      category: 'Sustainability',
-      featured: true
-    },
-    {
-      id: 2,
-      title: 'Hidden Gems: Unexplored Destinations',
-      excerpt: 'Discover lesser-known destinations that offer authentic experiences away from tourist crowds.',
-      author: 'Rahul Verma',
-      date: 'January 20, 2026',
-      readTime: '6 min read',
-      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop',
-      category: 'Travel'
-    },
-    {
-      id: 3,
-      title: 'Cultural Immersion Programs',
-      excerpt: 'How cultural exchange programs are bridging gaps and fostering global understanding.',
-      author: 'Anjali Patel',
-      date: 'January 18, 2026',
-      readTime: '5 min read',
-      image: 'https://images.unsplash.com/photo-1533929736458-ca588d08c8be?w=800&h=600&fit=crop',
-      category: 'Culture'
-    },
-    {
-      id: 4,
-      title: 'Adventure Tourism Safety Guidelines',
-      excerpt: 'Essential safety protocols and best practices for adventure tourism operators and enthusiasts.',
-      author: 'Vikram Singh',
-      date: 'January 15, 2026',
-      readTime: '7 min read',
-      image: 'https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?w=800&h=600&fit=crop',
-      category: 'Adventure'
-    }
-  ];
-
-  const galleryImages = [
-    {
-      id: 1,
-      url: 'https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=800&h=600&fit=crop',
-      category: 'heritage',
-      title: 'Ancient Architecture'
-    },
-    {
-      id: 2,
-      url: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop',
-      category: 'nature',
-      title: 'Mountain Landscape'
-    },
-    {
-      id: 3,
-      url: 'https://images.unsplash.com/photo-1533929736458-ca588d08c8be?w=800&h=600&fit=crop',
-      category: 'culture',
-      title: 'Traditional Dance'
-    },
-    {
-      id: 4,
-      url: 'https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?w=800&h=600&fit=crop',
-      category: 'adventure',
-      title: 'Mountain Trekking'
-    },
-    {
-      id: 5,
-      url: 'https://images.unsplash.com/photo-1545389336-cf090694435e?w=800&h=600&fit=crop',
-      category: 'culture',
-      title: 'Yoga Session'
-    },
-    {
-      id: 6,
-      url: 'https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=800&h=600&fit=crop',
-      category: 'nature',
-      title: 'Coastal Beauty'
-    },
-    {
-      id: 7,
-      url: 'https://images.unsplash.com/photo-1512813498716-3e640fed3f39?w=800&h=600&fit=crop',
-      category: 'heritage',
-      title: 'Historical Monument'
-    },
-    {
-      id: 8,
-      url: 'https://images.unsplash.com/photo-1551632811-561732d1e306?w=800&h=600&fit=crop',
-      category: 'adventure',
-      title: 'Rock Climbing'
-    },
-    {
-      id: 9,
-      url: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800&h=600&fit=crop',
-      category: 'nature',
-      title: 'Forest Trail'
-    }
-  ];
-
-  const testimonials = [
-    {
-      id: 1,
-      name: 'Sarah Johnson',
-      role: 'Travel Blogger',
-      image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop',
-      rating: 5,
-      text: 'Vibrant Tourism has completely transformed my travel experiences. Their attention to detail and commitment to sustainable tourism is truly remarkable. Every trip has been an unforgettable journey!'
-    },
-    {
-      id: 2,
-      name: 'Rajesh Kumar',
-      role: 'Adventure Enthusiast',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop',
-      rating: 5,
-      text: 'The adventure programs are world-class! Professional guides, safety-first approach, and breathtaking destinations. I\'ve participated in three expeditions and each one exceeded my expectations.'
-    },
-    {
-      id: 3,
-      name: 'Emily Chen',
-      role: 'Cultural Explorer',
-      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop',
-      rating: 5,
-      text: 'The cultural immersion programs offered by Vibrant Tourism are authentic and deeply enriching. I learned so much about local traditions and made connections that will last a lifetime.'
-    },
-    {
-      id: 4,
-      name: 'Michael Brown',
-      role: 'Photography Enthusiast',
-      image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop',
-      rating: 5,
-      text: 'As a photographer, I appreciate how Vibrant Tourism takes us to the most photogenic locations at perfect times. Their expertise in timing and locations is unmatched!'
-    }
-  ];
+  }, [testimonials.length]);
 
   const filteredGallery = galleryFilter === 'all' 
     ? galleryImages 
     : galleryImages.filter(img => img.category === galleryFilter);
 
   const nextTestimonial = () => {
-    setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+    if (testimonials.length > 0) {
+      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+    }
   };
 
   const prevTestimonial = () => {
-    setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+    if (testimonials.length > 0) {
+      setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+    }
   };
+
+  if (events.length === 0) return <div className="min-h-screen flex items-center justify-center"><div className="text-2xl">Loading...</div></div>;
 
   return (
     <div className="min-h-screen">

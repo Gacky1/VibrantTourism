@@ -1,14 +1,18 @@
 import { useState, useEffect, useRef } from 'react';
-import { educationData } from '../data/mockData';
 import Button from '../components/ui/Button';
 
 const EducationPage = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [coursesVisible, setCoursesVisible] = useState(false);
+  const [educationData, setEducationData] = useState(null);
   const sectionRef = useRef(null);
   const coursesRef = useRef(null);
 
   useEffect(() => {
+    fetch('/api/content/all')
+      .then(res => res.json())
+      .then(data => setEducationData(data.educationData))
+      .catch(err => console.error('Failed to fetch:', err));
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -35,6 +39,8 @@ const EducationPage = () => {
       coursesObserver.disconnect();
     };
   }, []);
+
+  if (!educationData) return <div className="min-h-screen flex items-center justify-center"><div className="text-2xl">Loading...</div></div>;
 
   return (
     <div className="min-h-screen">
