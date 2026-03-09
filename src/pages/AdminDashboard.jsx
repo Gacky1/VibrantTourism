@@ -18,7 +18,7 @@ const AdminDashboard = () => {
 
   const checkAuth = async () => {
     try {
-      const response = await fetch('/admin/check', { credentials: 'include' });
+      const response = await fetch('/api/admin/check', { credentials: 'include' });
       const data = await response.json();
       if (!data.authenticated) navigate('/admin');
       else setUser(data.user);
@@ -34,7 +34,7 @@ const AdminDashboard = () => {
   };
 
   const handleLogout = async () => {
-    await fetch('/admin/logout', { method: 'POST', credentials: 'include' });
+    await fetch('/api/admin/logout', { method: 'POST', credentials: 'include' });
     navigate('/admin');
   };
 
