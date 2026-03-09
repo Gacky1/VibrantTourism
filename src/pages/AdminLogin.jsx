@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { API_URL } from '../config/api';
+import { getApiUrl } from '../config/api';
 
 const AdminLogin = () => {
   const [credentials, setCredentials] = useState({ username: '', password: '' });
   const [error, setError] = useState('');
   const navigate = useNavigate();
+  const API_URL = getApiUrl();
 
   const handleSubmit = async (e) => {
     e.preventDefault();

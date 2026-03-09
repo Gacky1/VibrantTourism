@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { API_URL } from '../config/api';
+import { getApiUrl } from '../config/api';
 
 const AdminDashboard = () => {
   const [user, setUser] = useState(null);
@@ -9,6 +9,7 @@ const AdminDashboard = () => {
   const [editMode, setEditMode] = useState(null);
   const [editData, setEditData] = useState(null);
   const navigate = useNavigate();
+  const API_URL = getApiUrl();
 
   useEffect(() => {
     checkAuth();
