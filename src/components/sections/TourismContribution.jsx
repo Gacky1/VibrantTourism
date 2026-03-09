@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { tourismContribution } from '../../data/mockData';
 
 const TourismContribution = () => {
@@ -22,12 +23,11 @@ const TourismContribution = () => {
             </div>
             
             <div className="text-center">
-              <a 
-                href={tourismContribution.cta.href}
-                className="inline-block bg-gradient-to-r from-primary-600 to-accent-500 text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300"
-              >
-                {tourismContribution.cta.text}
-              </a>
+              <Link to="/explore-tourism">
+                <button className="inline-block bg-gradient-to-r from-primary-600 to-accent-500 text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300">
+                  {tourismContribution.cta.text}
+                </button>
+              </Link>
             </div>
           </div>
           

@@ -10,6 +10,7 @@ import ContactPage from './pages/ContactPage';
 import MembershipPage from './pages/MembershipPage';
 import EmploymentPage from './pages/EmploymentPage';
 import MediaPage from './pages/MediaPage';
+import ExploreTourism from './pages/ExploreTourism';
 import AdminLogin from './pages/AdminLogin';
 import AdminDashboard from './pages/AdminDashboard';
 import Loader from './components/ui/Loader';
@@ -98,6 +99,14 @@ function App() {
           element={
             <MainLayout activeRoute="/media">
               <MediaPage />
+            </MainLayout>
+          }
+        />
+        <Route
+          path="/explore-tourism"
+          element={
+            <MainLayout activeRoute="/explore-tourism">
+              <ExploreTourism />
             </MainLayout>
           }
         />
