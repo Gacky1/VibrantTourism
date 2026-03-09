@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { API_URL } from '../config/api';
 
 const AdminDashboard = () => {
   const [user, setUser] = useState(null);
@@ -16,7 +17,7 @@ const AdminDashboard = () => {
 
   const checkAuth = async () => {
     try {
-      const response = await fetch('http://localhost:5001/admin/check', { credentials: 'include' });
+      const response = await fetch(`${API_URL}/admin/check`, { credentials: 'include' });
       const data = await response.json();
       if (!data.authenticated) navigate('/admin');
       else setUser(data.user);
@@ -26,13 +27,13 @@ const AdminDashboard = () => {
   };
 
   const fetchContent = async () => {
-    const response = await fetch('http://localhost:5001/api/content/all');
+    const response = await fetch(`${API_URL}/api/content/all`);
     const data = await response.json();
     setContent(data);
   };
 
   const handleLogout = async () => {
-    await fetch('http://localhost:5001/admin/logout', { method: 'POST', credentials: 'include' });
+    await fetch(`${API_URL}/admin/logout`, { method: 'POST', credentials: 'include' });
     navigate('/admin');
   };
 
@@ -42,7 +43,7 @@ const AdminDashboard = () => {
   };
 
   const saveEdit = async () => {
-    await fetch(`http://localhost:5001/api/content/${editMode}`, {
+    await fetch(`${API_URL}/api/content/${editMode}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
@@ -252,7 +253,7 @@ const AdminDashboard = () => {
                   <input value={editData.image} onChange={(e) => setEditData({ ...editData, image: e.target.value })} className="w-full p-2 border rounded" placeholder="Image URL" />
                   <textarea value={editData.description} onChange={(e) => setEditData({ ...editData, description: e.target.value })} className="w-full p-2 border rounded" placeholder="Description" rows="2" />
                   <div className="flex gap-2">
-                    <button onClick={async () => { await fetch('http://localhost:5001/api/content/media/events', { method: 'POST', headers: { 'Content-Type': 'application/json' }, credentials: 'include', body: JSON.stringify(editData) }); fetchContent(); setEditMode(null); }} className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Save</button>
+                    <button onClick={async () => { await fetch(`${API_URL}/api/content/media/events`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, credentials: 'include', body: JSON.stringify(editData) }); fetchContent(); setEditMode(null); }} className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Save</button>
                     <button onClick={() => setEditMode(null)} className="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700">Cancel</button>
                   </div>
                 </div>
@@ -263,7 +264,7 @@ const AdminDashboard = () => {
                     <h4 className="font-bold">{event.title}</h4>
                     <p className="text-sm text-gray-600">{event.date} - {event.location}</p>
                     <p className="text-xs text-gray-500 mt-2">{event.description}</p>
-                    <button onClick={async () => { await fetch(`http://localhost:5001/api/content/media/events/${event.id}`, { method: 'DELETE', credentials: 'include' }); fetchContent(); }} className="mt-2 text-red-600 text-sm hover:underline">Delete</button>
+                    <button onClick={async () => { await fetch(`${API_URL}/api/content/media/events/${event.id}`, { method: 'DELETE', credentials: 'include' }); fetchContent(); }} className="mt-2 text-red-600 text-sm hover:underline">Delete</button>
                   </div>
                 ))}
               </div>
@@ -284,7 +285,7 @@ const AdminDashboard = () => {
                   <input value={editData.image} onChange={(e) => setEditData({ ...editData, image: e.target.value })} className="w-full p-2 border rounded" placeholder="Image URL" />
                   <input value={editData.category} onChange={(e) => setEditData({ ...editData, category: e.target.value })} className="w-full p-2 border rounded" placeholder="Category" />
                   <div className="flex gap-2">
-                    <button onClick={async () => { await fetch('http://localhost:5001/api/content/media/articles', { method: 'POST', headers: { 'Content-Type': 'application/json' }, credentials: 'include', body: JSON.stringify(editData) }); fetchContent(); setEditMode(null); }} className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Save</button>
+                    <button onClick={async () => { await fetch(`${API_URL}/api/content/media/articles`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, credentials: 'include', body: JSON.stringify(editData) }); fetchContent(); setEditMode(null); }} className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Save</button>
                     <button onClick={() => setEditMode(null)} className="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700">Cancel</button>
                   </div>
                 </div>
@@ -295,7 +296,7 @@ const AdminDashboard = () => {
                     <h4 className="font-bold">{article.title}</h4>
                     <p className="text-sm text-gray-600">{article.author} - {article.date}</p>
                     <p className="text-xs text-gray-500 mt-2">{article.excerpt}</p>
-                    <button onClick={async () => { await fetch(`http://localhost:5001/api/content/media/articles/${article.id}`, { method: 'DELETE', credentials: 'include' }); fetchContent(); }} className="mt-2 text-red-600 text-sm hover:underline">Delete</button>
+                    <button onClick={async () => { await fetch(`${API_URL}/api/content/media/articles/${article.id}`, { method: 'DELETE', credentials: 'include' }); fetchContent(); }} className="mt-2 text-red-600 text-sm hover:underline">Delete</button>
                   </div>
                 ))}
               </div>
