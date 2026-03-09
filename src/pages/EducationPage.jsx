@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import Button from '../components/ui/Button';
+import { educationData as mockEducationData } from '../data/mockData';
 
 const EducationPage = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -10,9 +11,15 @@ const EducationPage = () => {
 
   useEffect(() => {
     fetch('/api/content/all')
-      .then(res => res.json())
+      .then(res => {
+        if (!res.ok) throw new Error('API not available');
+        return res.json();
+      })
       .then(data => setEducationData(data.educationData))
-      .catch(err => console.error('Failed to fetch:', err));
+      .catch(err => {
+        console.log('Using mock data (API not available in dev)');
+        setEducationData(mockEducationData);
+      });
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {

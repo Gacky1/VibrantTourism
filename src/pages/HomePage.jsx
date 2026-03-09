@@ -7,7 +7,7 @@ import WhatWeDo from '../components/sections/WhatWeDo';
 import BoardMembers from '../components/sections/BoardMembers';
 import TourismContribution from '../components/sections/TourismContribution';
 import Button from '../components/ui/Button';
-import { sectionContent } from '../data/mockData';
+import { sectionContent, tourismCategories as mockCategories, whatWeDoCards as mockCards, boardMembers as mockMembers } from '../data/mockData';
 
 const HomePage = () => {
   const [heroVisible, setHeroVisible] = useState(false);
@@ -18,13 +18,21 @@ const HomePage = () => {
   useEffect(() => {
     setHeroVisible(true);
     fetch('/api/content/all')
-      .then(res => res.json())
+      .then(res => {
+        if (!res.ok) throw new Error('API not available');
+        return res.json();
+      })
       .then(data => {
         setTourismCategories(data.tourismCategories || []);
         setWhatWeDoCards(data.whatWeDoCards || []);
         setBoardMembers(data.boardMembers || []);
       })
-      .catch(err => console.error('Failed to fetch content:', err));
+      .catch(err => {
+        console.log('Using mock data (API not available in dev)');
+        setTourismCategories(mockCategories);
+        setWhatWeDoCards(mockCards);
+        setBoardMembers(mockMembers);
+      });
   }, []);
 
   return (

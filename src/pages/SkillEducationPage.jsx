@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import Button from '../components/ui/Button';
+import { skillEducationData as mockSkillData } from '../data/mockData';
 
 const SkillEducationPage = () => {
   const [heroVisible, setHeroVisible] = useState(false);
@@ -15,9 +16,15 @@ const SkillEducationPage = () => {
     setHeroVisible(true);
 
     fetch('/api/content/all')
-      .then(res => res.json())
+      .then(res => {
+        if (!res.ok) throw new Error('API not available');
+        return res.json();
+      })
       .then(data => setSkillEducationData(data.skillEducationData))
-      .catch(err => console.error('Failed to fetch:', err));
+      .catch(err => {
+        console.log('Using mock data (API not available in dev)');
+        setSkillEducationData(mockSkillData);
+      });
 
     const observers = [
       {
