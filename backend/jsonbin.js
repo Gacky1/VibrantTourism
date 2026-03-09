@@ -1,8 +1,8 @@
 // JSONBin.io - Free JSON storage
 // Sign up at https://jsonbin.io (free tier: 10k requests/month)
 
-const JSONBIN_API_KEY = '$2a$10$qpE1gELCWzk4/LXkIGNJCewBVtVQAUBVONhY5TXPLc7AHKCMtqFcK'; // Get from jsonbin.io
-const BIN_ID = '69af00d9ae596e708f718b3e '; // Created after first POST
+const JSONBIN_API_KEY = '$2a$10$qpE1gELCWzk4/LXkIGNJCewBVtVQAUBVONhY5TXPLc7AHKCMtqFcK';
+const BIN_ID = '69af00d9ae596e708f718b3e';
 
 export const jsonbinDB = {
   async get() {
