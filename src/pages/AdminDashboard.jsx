@@ -57,12 +57,22 @@ const AdminDashboard = () => {
 
   const updateField = (path, value) => {
     const keys = path.split('.');
-    const newData = { ...editData };
+    const newData = Array.isArray(editData) ? [...editData] : { ...editData };
     let current = newData;
     for (let i = 0; i < keys.length - 1; i++) {
-      current = current[keys[i]];
+      const key = keys[i];
+      if (Array.isArray(current)) {
+        current = current[parseInt(key)];
+      } else {
+        current = current[key];
+      }
     }
-    current[keys[keys.length - 1]] = value;
+    const lastKey = keys[keys.length - 1];
+    if (Array.isArray(current)) {
+      current[parseInt(lastKey)] = value;
+    } else {
+      current[lastKey] = value;
+    }
     setEditData(newData);
   };
 
