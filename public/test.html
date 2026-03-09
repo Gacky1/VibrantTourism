@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API Test</title>
+</head>
+<body>
+    <h1>Testing Cloudflare Functions</h1>
+    <button onclick="testLogin()">Test Login</button>
+    <button onclick="testCheck()">Test Check</button>
+    <button onclick="testContent()">Test Content</button>
+    <pre id="result"></pre>
+
+    <script>
+        async function testLogin() {
+            const result = await fetch('/api/admin/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username: 'admin', password: 'admin@123' })
+            }).then(r => r.json());
+            document.getElementById('result').textContent = JSON.stringify(result, null, 2);
+        }
+
+        async function testCheck() {
+            const result = await fetch('/api/admin/check').then(r => r.json());
+            document.getElementById('result').textContent = JSON.stringify(result, null, 2);
+        }
+
+        async function testContent() {
+            const result = await fetch('/api/content/all').then(r => r.json());
+            document.getElementById('result').textContent = JSON.stringify(result, null, 2);
+        }
+    </script>
+</body>
+</html>
