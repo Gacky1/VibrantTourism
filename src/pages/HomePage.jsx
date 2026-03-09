@@ -7,18 +7,24 @@ import WhatWeDo from '../components/sections/WhatWeDo';
 import BoardMembers from '../components/sections/BoardMembers';
 import TourismContribution from '../components/sections/TourismContribution';
 import Button from '../components/ui/Button';
-import { 
-  tourismCategories, 
-  whatWeDoCards,
-  boardMembers, 
-  sectionContent 
-} from '../data/mockData';
+import { sectionContent } from '../data/mockData';
 
 const HomePage = () => {
   const [heroVisible, setHeroVisible] = useState(false);
+  const [tourismCategories, setTourismCategories] = useState([]);
+  const [whatWeDoCards, setWhatWeDoCards] = useState([]);
+  const [boardMembers, setBoardMembers] = useState([]);
 
   useEffect(() => {
     setHeroVisible(true);
+    fetch('/api/content/all')
+      .then(res => res.json())
+      .then(data => {
+        setTourismCategories(data.tourismCategories || []);
+        setWhatWeDoCards(data.whatWeDoCards || []);
+        setBoardMembers(data.boardMembers || []);
+      })
+      .catch(err => console.error('Failed to fetch content:', err));
   }, []);
 
   return (
