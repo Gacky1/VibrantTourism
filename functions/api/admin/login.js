@@ -10,16 +10,30 @@ export async function onRequest(context) {
     return new Response(null, { headers: corsHeaders });
   }
 
-  const { username, password } = await context.request.json();
-
-  if (username === 'admin' && password === 'admin@123') {
-    return new Response(JSON.stringify({ success: true, message: 'Login successful' }), {
+  if (context.request.method !== 'POST') {
+    return new Response(JSON.stringify({ success: false, message: 'Method not allowed' }), {
+      status: 405,
       headers: { ...corsHeaders, 'Content-Type': 'application/json' }
     });
   }
 
-  return new Response(JSON.stringify({ success: false, message: 'Invalid credentials' }), {
-    status: 401,
-    headers: { ...corsHeaders, 'Content-Type': 'application/json' }
-  });
+  try {
+    const { username, password } = await context.request.json();
+
+    if (username === 'admin' && password === 'admin@123') {
+      return new Response(JSON.stringify({ success: true, message: 'Login successful' }), {
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+      });
+    }
+
+    return new Response(JSON.stringify({ success: false, message: 'Invalid credentials' }), {
+      status: 401,
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+    });
+  } catch (error) {
+    return new Response(JSON.stringify({ success: false, message: error.message }), {
+      status: 500,
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+    });
+  }
 }
