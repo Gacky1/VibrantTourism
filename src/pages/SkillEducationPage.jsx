@@ -14,17 +14,7 @@ const SkillEducationPage = () => {
 
   useEffect(() => {
     setHeroVisible(true);
-
-    fetch('/api/content/all')
-      .then(res => {
-        if (!res.ok) throw new Error('API not available');
-        return res.json();
-      })
-      .then(data => setSkillEducationData(data.skillEducationData))
-      .catch(err => {
-        console.log('Using mock data (API not available in dev)');
-        setSkillEducationData(mockSkillData);
-      });
+    setSkillEducationData(mockSkillData);
 
     const observers = [
       {

@@ -41,8 +41,8 @@ const MediaPage = () => {
         console.log('Using mock data (API not available in dev)');
         setEvents(mockMediaData.events || []);
         setArticles(mockMediaData.articles || []);
-        setGalleryImages([]);
-        setTestimonials([]);
+        setGalleryImages(mockMediaData.galleryImages || []);
+        setTestimonials(mockMediaData.testimonials || []);
       });
 
     const observers = [
@@ -215,13 +215,14 @@ const MediaPage = () => {
           </div>
 
           {/* Featured Article */}
-          <div className={`mb-12 transform transition-all duration-1000 ${
-            articlesVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'
-          }`}>
-            <div className="bg-gradient-to-br from-primary-50 to-accent-50 rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-200">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
-                <div className="relative h-96 lg:h-auto overflow-hidden">
-                  <img 
+          {articles.length > 0 && (
+            <div className={`mb-12 transform transition-all duration-1000 ${
+              articlesVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'
+            }`}>
+              <div className="bg-gradient-to-br from-primary-50 to-accent-50 rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-200">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
+                  <div className="relative h-96 lg:h-auto overflow-hidden">
+                    <img 
                     src={articles[0].image} 
                     alt={articles[0].title}
                     className="w-full h-full object-cover transform transition-transform duration-700 hover:scale-110"
@@ -261,6 +262,7 @@ const MediaPage = () => {
               </div>
             </div>
           </div>
+          )}
 
           {/* Recent Articles Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -413,12 +415,13 @@ const MediaPage = () => {
             </p>
           </div>
 
-          <div className={`max-w-4xl mx-auto transform transition-all duration-1000 ${
-            testimonialsVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'
-          }`}>
-            <div className="bg-white/10 backdrop-blur-md rounded-3xl p-8 lg:p-12 border border-white/20 shadow-2xl">
-              <div className="text-center mb-8">
-                <img 
+          {testimonials.length > 0 && (
+            <div className={`max-w-4xl mx-auto transform transition-all duration-1000 ${
+              testimonialsVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'
+            }`}>
+              <div className="bg-white/10 backdrop-blur-md rounded-3xl p-8 lg:p-12 border border-white/20 shadow-2xl">
+                <div className="text-center mb-8">
+                  <img 
                   src={testimonials[currentTestimonial].image} 
                   alt={testimonials[currentTestimonial].name}
                   className="w-24 h-24 rounded-full mx-auto mb-6 border-4 border-white shadow-xl object-cover"
@@ -471,6 +474,7 @@ const MediaPage = () => {
               </div>
             </div>
           </div>
+          )}
         </div>
       </section>
 

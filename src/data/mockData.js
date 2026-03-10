@@ -132,5 +132,18 @@ export const mediaData = {
   articles: [
     { id: 1, title: 'The Future of Sustainable Tourism in India', excerpt: 'Exploring how eco-friendly practices are reshaping the tourism industry and creating positive impacts on local communities.', author: 'Dr. Priya Sharma', date: 'January 25, 2026', readTime: '8 min read', image: 'https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=800&h=600&fit=crop', category: 'Sustainability', featured: true },
     { id: 2, title: 'Hidden Gems: Unexplored Destinations', excerpt: 'Discover lesser-known destinations that offer authentic experiences away from tourist crowds.', author: 'Rahul Verma', date: 'January 20, 2026', readTime: '6 min read', image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop', category: 'Travel' }
+  ],
+  galleryImages: [
+    { id: 1, title: 'Taj Mahal at Sunrise', category: 'heritage', url: 'https://images.unsplash.com/photo-1564507592333-c60657eea523?w=800&h=600&fit=crop' },
+    { id: 2, title: 'Kerala Backwaters', category: 'nature', url: 'https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=800&h=600&fit=crop' },
+    { id: 3, title: 'Pushkar Camel Fair', category: 'culture', url: 'https://images.unsplash.com/photo-1560002131-4a376ebca9b7?w=800&h=600&fit=crop' },
+    { id: 4, title: 'Himalayan Trek', category: 'adventure', url: 'https://images.unsplash.com/photo-1522013892790-25c760824b26?w=800&h=600&fit=crop' },
+    { id: 5, title: 'Varanasi Ghats', category: 'culture', url: 'https://images.unsplash.com/photo-1561359313-0639aad3a644?w=800&h=600&fit=crop' },
+    { id: 6, title: 'Hawa Mahal', category: 'heritage', url: 'https://images.unsplash.com/photo-1477587458883-47145ed94245?w=800&h=600&fit=crop' }
+  ],
+  testimonials: [
+    { id: 1, name: 'Sarah Jenkins', role: 'Travel Blogger', image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=face', rating: 5, text: 'An absolutely incredible experience. The guides were knowledgeable and the itinerary was perfect.' },
+    { id: 2, name: 'Michael Chen', role: 'Photographer', image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop&crop=face', rating: 5, text: 'Vibrant Tourism helped me capture the most stunning moments of my trip to India. Highly recommended!' },
+    { id: 3, name: 'Emma Watson', role: 'Cultural Explorer', image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop&crop=face', rating: 4, text: 'The heritage tour was deeply insightful. I loved learning about the rich history and traditions.' }
   ]
 };
