@@ -5,31 +5,51 @@ const ProviderAccordion = ({ title, providers = [] }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="mb-3 rounded-xl border border-gray-200 overflow-hidden">
+    <div className={`mb-3 rounded-2xl border overflow-hidden transition-all duration-300 ${
+      isOpen ? 'border-secondary/30 shadow-md shadow-blue-50' : 'border-gray-200 shadow-sm hover:border-gray-300'
+    }`}>
       {/* Header */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className={`w-full flex items-center justify-between px-5 py-4 text-left transition-colors duration-150 focus:outline-none ${
-          isOpen ? 'bg-secondary text-white' : 'bg-white text-gray-dark hover:bg-slate-50'
+        className={`w-full flex items-center justify-between px-5 py-4 text-left transition-all duration-200 focus:outline-none ${
+          isOpen ? 'bg-secondary text-white' : 'bg-white text-gray-dark hover:bg-slate-50/80'
         }`}
       >
         <span className="text-sm font-semibold">{title}</span>
         <IoChevronDownOutline
-          className={`w-4 h-4 flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180 text-white' : 'text-gray-400'}`}
+          className={`w-4 h-4 flex-shrink-0 transition-transform duration-300 ${
+            isOpen ? 'rotate-180 text-white' : 'text-gray-400'
+          }`}
         />
       </button>
 
-      {/* Body */}
-      <div className={`transition-all duration-300 ${isOpen ? 'max-h-[900px]' : 'max-h-0 overflow-hidden'}`}>
+      {/* Body — smooth height transition */}
+      <div
+        className="overflow-hidden transition-all duration-400 ease-in-out"
+        style={{ maxHeight: isOpen ? '900px' : '0px' }}
+      >
         <div className="p-5 grid grid-cols-1 md:grid-cols-2 gap-4 bg-white border-t border-gray-100">
           {providers.map((provider, i) => (
-            <div key={i} className="card-flat p-4 flex flex-col gap-3 hover:border-blue-200 transition-colors duration-150">
-              <h4 className="text-sm font-semibold text-gray-dark">{provider.name}</h4>
+            <div key={i} className="card-flat p-4 flex flex-col gap-3 group
+              hover:border-blue-200 hover:shadow-sm transition-all duration-200">
+
+              {/* Provider image if available */}
+              {provider.image && (
+                <div className="h-32 rounded-xl overflow-hidden img-zoom -mx-0.5">
+                  <img src={provider.image} alt={provider.name} className="w-full h-full object-cover" />
+                </div>
+              )}
+
+              <h4 className="text-sm font-semibold text-gray-dark group-hover:text-secondary transition-colors duration-150">
+                {provider.name}
+              </h4>
+
               <div className="flex flex-wrap gap-1.5">
-                {provider.services.split(',').map((s, si) => (
-                  <span key={si} className="tag">{s.trim()}</span>
+                {(provider.tags || provider.services?.split(',') || []).map((s, si) => (
+                  <span key={si} className="tag">{typeof s === 'string' ? s.trim() : s}</span>
                 ))}
               </div>
+
               <div className="flex gap-2 mt-1">
                 <button
                   onClick={() => alert(`Booking flow opened for ${provider.name}`)}

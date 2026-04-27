@@ -1,11 +1,51 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import HeroSection from '../components/HeroSection';
 import { IoArrowForwardOutline, IoSchoolOutline, IoBriefcaseOutline,
          IoBusinessOutline, IoPeopleOutline } from 'react-icons/io5';
 
 const inputClass = 'form-input';
 
+/* ── Animated counter ── */
+const AnimCounter = ({ target, suffix = '' }) => {
+  const [count, setCount] = useState(0);
+  const ref     = useRef(null);
+  const started = useRef(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && !started.current) {
+        started.current = true;
+        const end  = parseFloat(target);
+        const step = end / (1200 / 16);
+        let cur = 0;
+        const t = setInterval(() => {
+          cur += step;
+          if (cur >= end) { setCount(end); clearInterval(t); }
+          else setCount(Math.floor(cur));
+        }, 16);
+      }
+    }, { threshold: 0.5 });
+    io.observe(el);
+    return () => io.disconnect();
+  }, [target]);
+  return <span ref={ref}>{count}{suffix}</span>;
+};
+
+const useReveal = () => {
+  useEffect(() => {
+    const els = document.querySelectorAll('.reveal');
+    const io  = new IntersectionObserver(
+      (entries) => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+      { threshold: 0.08 }
+    );
+    els.forEach(el => io.observe(el));
+    return () => io.disconnect();
+  }, []);
+};
+
 const MembershipPage = () => {
+  useReveal();
   const [activeTab, setActiveTab] = useState('training');
   const [formType,  setFormType]  = useState('Training Institute');
   const [formData,  setFormData]  = useState({
@@ -51,21 +91,24 @@ const MembershipPage = () => {
         }
       />
 
-      {/* Network stats banner */}
+      {/* Network stats */}
       <section className="py-12 bg-primary-dark">
         <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap justify-center gap-12 text-center">
             {[
-              { value: '500+', label: 'Members',  Icon: IoPeopleOutline   },
-              { value: '28',   label: 'States',   Icon: IoBusinessOutline },
-              { value: '100+', label: 'Partners', Icon: IoBriefcaseOutline},
-            ].map(({ value, label, Icon }, i) => (
-              <div key={i} className="flex items-center gap-3">
-                <div className="icon-box-gold w-10 h-10 rounded-lg">
+              { value: '500', suffix: '+', label: 'Members',  Icon: IoPeopleOutline    },
+              { value: '28',  suffix: '',  label: 'States',   Icon: IoBusinessOutline  },
+              { value: '100', suffix: '+', label: 'Partners', Icon: IoBriefcaseOutline },
+            ].map(({ value, suffix, label, Icon }, i) => (
+              <div key={i} className="flex items-center gap-3 group">
+                <div className="icon-box-gold w-10 h-10 rounded-lg
+                  group-hover:scale-110 group-hover:shadow-lg transition-all duration-200">
                   <Icon className="w-5 h-5" />
                 </div>
                 <div className="text-left">
-                  <div className="text-2xl font-bold text-white">{value}</div>
+                  <div className="text-2xl font-bold text-white stat-number">
+                    <AnimCounter target={value} suffix={suffix} />
+                  </div>
                   <div className="text-[12px] text-slate-400 uppercase tracking-wider">{label}</div>
                 </div>
               </div>
@@ -77,20 +120,20 @@ const MembershipPage = () => {
       {/* Members grid */}
       <section className="py-20 bg-surface">
         <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-10">
+          <div className="text-center mb-10 reveal">
             <span className="section-label">Our Network</span>
             <h2 className="text-2xl md:text-3xl font-bold text-gray-dark mt-1">Network Members</h2>
             <div className="section-divider mx-auto" />
           </div>
 
-          {/* Tabs */}
           <div className="flex flex-wrap justify-center gap-2 mb-8">
             {Object.entries(tabMeta).map(([key, { label, Icon }]) => (
               <button key={key} onClick={() => setActiveTab(key)}
-                className={`flex items-center gap-2 px-5 py-2 text-[12px] font-semibold rounded-lg border transition-all duration-150 ${
+                className={`flex items-center gap-2 px-5 py-2.5 text-[12px] font-semibold rounded-xl border
+                  transition-all duration-200 ${
                   activeTab === key
-                    ? 'bg-secondary text-white border-secondary'
-                    : 'bg-white text-gray-mid border-gray-200 hover:border-secondary hover:text-secondary'
+                    ? 'bg-secondary text-white border-secondary shadow-md shadow-blue-100'
+                    : 'bg-white text-gray-mid border-gray-200 hover:border-secondary hover:text-secondary hover:bg-blue-50/40'
                 }`}>
                 <Icon className="w-4 h-4" />
                 {label}
@@ -100,11 +143,14 @@ const MembershipPage = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5 max-w-4xl mx-auto">
             {memberData[activeTab].map((m, i) => (
-              <div key={i} className="card p-5 flex flex-col items-center text-center group">
-                <div className="icon-box w-12 h-12 rounded-xl mb-3 group-hover:bg-secondary group-hover:text-white transition-colors duration-200">
+              <div key={i} className={`card p-5 flex flex-col items-center text-center group reveal reveal-delay-${i + 1}`}>
+                <div className="icon-box w-12 h-12 rounded-xl mb-3
+                  group-hover:bg-secondary group-hover:text-white group-hover:scale-110 group-hover:shadow-md
+                  transition-all duration-250">
                   {(() => { const { Icon } = tabMeta[activeTab]; return <Icon className="w-6 h-6" />; })()}
                 </div>
-                <h4 className="text-[14px] font-semibold text-gray-dark mb-1 group-hover:text-secondary transition-colors duration-150">{m.name}</h4>
+                <h4 className="text-[14px] font-semibold text-gray-dark mb-1
+                  group-hover:text-secondary transition-colors duration-150">{m.name}</h4>
                 <p className="text-[11px] text-gray-mid mb-2">{m.city}</p>
                 <span className="tag">{m.type}</span>
               </div>
@@ -116,27 +162,26 @@ const MembershipPage = () => {
       {/* Application form */}
       <section id="form-section" className="py-20 bg-white">
         <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-10">
+          <div className="text-center mb-10 reveal">
             <span className="section-label">Apply</span>
             <h2 className="text-2xl md:text-3xl font-bold text-gray-dark mt-1">Apply for Membership</h2>
             <div className="section-divider mx-auto" />
           </div>
 
-          {/* Form type tabs */}
           <div className="flex flex-wrap justify-center gap-2 mb-8">
             {formTypes.map(type => (
               <button key={type} onClick={() => setFormType(type)}
-                className={`px-4 py-2 text-[12px] font-semibold rounded-lg border transition-all duration-150 ${
+                className={`px-4 py-2 text-[12px] font-semibold rounded-xl border transition-all duration-200 ${
                   formType === type
-                    ? 'bg-secondary text-white border-secondary'
-                    : 'bg-white text-gray-mid border-gray-200 hover:border-secondary hover:text-secondary'
+                    ? 'bg-secondary text-white border-secondary shadow-md shadow-blue-100'
+                    : 'bg-white text-gray-mid border-gray-200 hover:border-secondary hover:text-secondary hover:bg-blue-50/40'
                 }`}>
                 {type}
               </button>
             ))}
           </div>
 
-          <form onSubmit={handleSubmit} className="card p-8 max-w-2xl mx-auto">
+          <form onSubmit={handleSubmit} className="card p-8 max-w-2xl mx-auto reveal">
             <h3 className="text-base font-bold text-gray-dark mb-6">Application: {formType}</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
               {[
@@ -147,8 +192,9 @@ const MembershipPage = () => {
                 { label: 'State *',                name: 'state',         type: 'text'  },
                 { label: 'City *',                 name: 'city',          type: 'text'  },
               ].map(({ label, name, type }) => (
-                <div key={name}>
-                  <label className="block text-[11px] font-semibold text-gray-mid uppercase tracking-wider mb-1.5">{label}</label>
+                <div key={name} className="group/field">
+                  <label className="block text-[11px] font-semibold text-gray-mid uppercase tracking-wider mb-1.5
+                    group-focus-within/field:text-secondary transition-colors duration-150">{label}</label>
                   <input type={type} name={name} value={formData[name]} onChange={handleChange} required className={inputClass} />
                 </div>
               ))}
