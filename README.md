@@ -1,130 +1,16 @@
-# Vibrant Tourism
+# React + Vite
 
-A modern, scalable, component-based tourism website built with React, Vite, and Tailwind CSS.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## 🏗️ Architecture
+Currently, two official plugins are available:
 
-### Component Structure
-```
-src/
-├── components/
-│   ├── layout/          # Layout components (Navbar, MainLayout)
-│   ├── sections/        # Page sections (CategoryGrid, AboutSection, etc.)
-│   ├── ui/             # Reusable UI components (Button, etc.)
-│   └── index.js        # Component exports
-├── pages/              # Page components
-├── data/               # Mock data and configurations
-└── styles/             # Global styles
-```
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-### Key Features
-- **Component-based**: Atomic design principles with reusable components
-- **Framework-agnostic**: Clean separation allows easy framework switching
-- **Mobile-first**: Responsive design with Tailwind CSS
-- **Data-driven**: All content configurable via data objects
-- **Backend-ready**: Structured for API integration
+## React Compiler
 
-## 🚀 Components
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-### Layout Components
-- **MainLayout**: Main page wrapper with navbar and footer
-- **Navbar**: Sticky navigation with mobile menu and scroll effects
+## Expanding the ESLint configuration
 
-### Section Components
-- **CategoryGrid**: Responsive grid for tourism categories with hover effects
-- **SectionText**: Flexible text sections with configurable layouts
-- **AboutSection**: Two-column about section
-- **WhatWeDo**: Service cards with animations
-
-### UI Components
-- **Button**: Configurable button with multiple variants and sizes
-
-## 📱 Responsive Design
-
-- **Desktop**: 3-column grid, full navigation
-- **Tablet**: 2-column grid, condensed layout
-- **Mobile**: Single column, hamburger menu
-
-## 🔧 Development
-
-```bash
-# Install dependencies
-npm install
-
-# Install backend dependencies
-cd backend
-npm install
-cd ..
-
-# Start development server (Frontend)
-npm run dev
-
-# Start backend server (in separate terminal)
-cd backend
-npm start
-
-# Build for production
-npm run build
-```
-
-## 🔐 Admin Panel
-
-### Access
-- **URL**: http://localhost:5173/admin
-- **Username**: `admin`
-- **Password**: `admin@123`
-
-### Features
-- Session-based authentication
-- Protected dashboard routes
-- Logout functionality
-- Ready for content management integration
-
-## 🎨 Customization
-
-### Colors
-Modify `tailwind.config.js` to update the color scheme:
-```js
-colors: {
-  primary: { /* Blue theme */ },
-  accent: { /* Orange accent */ }
-}
-```
-
-### Content
-Update `src/data/mockData.js` to modify:
-- Navigation menu items
-- Tourism categories
-- Service cards
-- Text content
-
-## 🔮 Future Backend Integration
-
-The architecture supports:
-- **CMS Integration**: Headless CMS for content management
-- **API Integration**: RESTful or GraphQL APIs
-- **Authentication**: User login and membership system
-- **Admin Dashboard**: Content and user management
-- **Media Management**: Image and video uploads
-- **Employment Portal**: Job listings and applications
-- **Course Management**: Skill development programs
-
-## 📦 Dependencies
-
-### Frontend
-- React 18+ with React Router
-- Vite for build tooling
-- Tailwind CSS for styling
-- PostCSS and Autoprefixer
-
-### Backend
-- Express.js for server
-- Express-session for authentication
-- CORS for cross-origin requests
-
-## 🎯 Performance
-
-- Lazy loading ready
-- Component-level code splitting
-- Optimized images and assets
-- Minimal bundle size
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.

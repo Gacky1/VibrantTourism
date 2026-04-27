@@ -1,118 +1,42 @@
-import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import MainLayout from './components/layout/MainLayout';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+
+// Pages
 import HomePage from './pages/HomePage';
+import IndustryPage from './pages/IndustryPage';
 import DestinationPage from './pages/DestinationPage';
 import EducationPage from './pages/EducationPage';
 import SkillEducationPage from './pages/SkillEducationPage';
 import UpskillingPage from './pages/UpskillingPage';
-import ContactPage from './pages/ContactPage';
-import MembershipPage from './pages/MembershipPage';
 import EmploymentPage from './pages/EmploymentPage';
+import MembershipPage from './pages/MembershipPage';
 import MediaPage from './pages/MediaPage';
-import ExploreTourism from './pages/ExploreTourism';
-import AdminLogin from './pages/AdminLogin';
-import AdminDashboard from './pages/AdminDashboard';
-import Loader from './components/ui/Loader';
-import './styles/globals.css';
+import ContactPage from './pages/ContactPage';
 
 function App() {
-  const [isLoading, setIsLoading] = useState(true);
-
-  const handleLoadingComplete = () => {
-    setIsLoading(false);
-  };
-
-  if (isLoading) {
-    return <Loader onComplete={handleLoadingComplete} />;
-  }
+  const currentPath = window.location.pathname;
 
   return (
     <Router>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <MainLayout activeRoute="/">
-              <HomePage />
-            </MainLayout>
-          }
-        />
-        <Route
-          path="/destination"
-          element={
-            <MainLayout activeRoute="/destination">
-              <DestinationPage />
-            </MainLayout>
-          }
-        />
-        <Route
-          path="/education"
-          element={
-            <MainLayout activeRoute="/education">
-              <EducationPage />
-            </MainLayout>
-          }
-        />
-        <Route
-          path="/skill-education"
-          element={
-            <MainLayout activeRoute="/skill-education">
-              <SkillEducationPage />
-            </MainLayout>
-          }
-        />
-        <Route
-          path="/upskilling"
-          element={
-            <MainLayout activeRoute="/upskilling">
-              <UpskillingPage />
-            </MainLayout>
-          }
-        />
-        <Route
-          path="/contact"
-          element={
-            <MainLayout activeRoute="/contact">
-              <ContactPage />
-            </MainLayout>
-          }
-        />
-        <Route
-          path="/membership"
-          element={
-            <MainLayout activeRoute="/membership">
-              <MembershipPage />
-            </MainLayout>
-          }
-        />
-        <Route
-          path="/employment"
-          element={
-            <MainLayout activeRoute="/employment">
-              <EmploymentPage />
-            </MainLayout>
-          }
-        />
-        <Route
-          path="/media"
-          element={
-            <MainLayout activeRoute="/media">
-              <MediaPage />
-            </MainLayout>
-          }
-        />
-        <Route
-          path="/explore-tourism"
-          element={
-            <MainLayout activeRoute="/explore-tourism">
-              <ExploreTourism />
-            </MainLayout>
-          }
-        />
-        <Route path="/admin" element={<AdminLogin />} />
-        <Route path="/admin/dashboard" element={<AdminDashboard />} />
-      </Routes>
+      <div className="flex flex-col min-h-screen">
+        <Navbar activeRoute={currentPath} />
+        <main className="flex-grow">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/destination" element={<DestinationPage />} />
+            <Route path="/industry" element={<IndustryPage />} />
+            <Route path="/education" element={<EducationPage />} />
+            <Route path="/skill-education" element={<SkillEducationPage />} />
+            <Route path="/upskilling" element={<UpskillingPage />} />
+            <Route path="/employment" element={<EmploymentPage />} />
+            <Route path="/membership" element={<MembershipPage />} />
+            <Route path="/media" element={<MediaPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
     </Router>
   );
 }
