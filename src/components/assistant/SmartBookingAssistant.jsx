@@ -13,7 +13,7 @@ import ProviderCard     from './ProviderCard';
 import ComparisonTable  from './ComparisonTable';
 import BookingModal     from './BookingModal';
 
-import { tourismCategories, stateWiseTourism, providersData, stateDetails } from '../../data/tourismData';
+import { tourismCategories, stateWiseTourism, providersData, stateDetails, RegionsData } from '../../data/tourismData';
 
 /* ── helpers ── */
 const ALL_PROVIDERS = [...providersData.resorts, ...providersData.operators, ...providersData.transport];
@@ -25,10 +25,8 @@ const PROVIDER_TABS = [
   { key: 'transport', label: 'Transport'        },
 ];
 
-const POPULAR = ['Rajasthan', 'Kerala', 'Goa', 'Uttarakhand', 'Himachal Pradesh'];
-
 /* ── Step wrapper ── */
-const StepShell = ({ title, subtitle, children, onBack, onNext, nextLabel = 'Continue', nextDisabled = false, step }) => (
+const StepShell = ({ title, subtitle, children, onBack, onNext, nextLabel = 'Continue', nextDisabled = false }) => (
   <div className="animate-step">
     <div className="text-center mb-8">
       <h2 className="text-2xl md:text-3xl font-bold text-gray-dark">{title}</h2>
@@ -56,34 +54,33 @@ const StepShell = ({ title, subtitle, children, onBack, onNext, nextLabel = 'Con
 );
 
 /* ── Main component ── */
-const SmartBookingAssistant = ({ initialType }) => {
-  const [step,          setStep]          = useState(0);
-  const [interest,      setInterest]      = useState(initialType || null);
+const SmartBookingAssistant = ({ initialType, initialRegion }) => {
+  const isInitialTypeValid = initialType && tourismCategories[initialType];
+  const [step,          setStep]          = useState(isInitialTypeValid ? 1 : 0);
+  const [interest,      setInterest]      = useState(isInitialTypeValid ? initialType : null);
   const [destination,   setDestination]   = useState(null);
   const [providerTab,   setProviderTab]   = useState('all');
   const [compareList,   setCompareList]   = useState([]);
-  const [showCompare,   setShowCompare]   = useState(false);
   const [bookingTarget, setBookingTarget] = useState(null);
   const topRef = useRef(null);
+  const prevStepRef = useRef(undefined);
 
   // Scroll to top of assistant on step change
   useEffect(() => {
-    topRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }, [step]);
-
-  // If initialType provided, pre-select and jump to step 1
-  useEffect(() => {
-    if (initialType && tourismCategories[initialType]) {
-      setInterest(initialType);
+    if (prevStepRef.current !== undefined && prevStepRef.current !== step) {
+      topRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
-  }, [initialType]);
+    prevStepRef.current = step;
+  }, [step]);
 
   /* ── derived data ── */
   const validStates = interest
     ? Object.entries(stateWiseTourism)
         .filter(([, cats]) => cats.includes(interest))
         .map(([state]) => state)
-    : Object.keys(stateWiseTourism);
+        .filter(state => !initialRegion || RegionsData[initialRegion]?.states.includes(state))
+    : Object.keys(stateWiseTourism)
+        .filter(state => !initialRegion || RegionsData[initialRegion]?.states.includes(state));
 
   const filteredProviders = providerTab === 'all'
     ? ALL_PROVIDERS
@@ -104,11 +101,11 @@ const SmartBookingAssistant = ({ initialType }) => {
   /* ── reset ── */
   const reset = () => {
     setStep(0); setInterest(null); setDestination(null);
-    setCompareList([]); setShowCompare(false); setProviderTab('all');
+    setCompareList([]); setProviderTab('all');
   };
 
   /* ── STEP 0: Interest ── */
-  const Step0 = () => (
+  const renderStep0 = () => (
     <StepShell
       title="What kind of experience are you looking for?"
       subtitle="Choose your travel interest to get personalised recommendations"
@@ -153,7 +150,7 @@ const SmartBookingAssistant = ({ initialType }) => {
   );
 
   /* ── STEP 1: Destination ── */
-  const Step1 = () => {
+  const renderStep1 = () => {
     const cat = tourismCategories[interest];
     return (
       <StepShell
@@ -201,7 +198,7 @@ const SmartBookingAssistant = ({ initialType }) => {
   };
 
   /* ── STEP 2: Explore ── */
-  const Step2 = () => {
+  const renderStep2 = () => {
     const cat = tourismCategories[interest];
     return (
       <StepShell
@@ -261,7 +258,7 @@ const SmartBookingAssistant = ({ initialType }) => {
             </button>
           ))}
           {compareList.length > 0 && (
-            <button onClick={() => setShowCompare(true)}
+            <button onClick={() => setStep(3)}
               className="ml-auto flex items-center gap-1.5 px-4 py-2 text-[12px] font-semibold rounded-lg bg-amber-50 text-amber-700 border border-amber-200 hover:bg-amber-100 transition-colors">
               <IoScaleOutline className="w-4 h-4" />
               Compare ({compareList.length})
@@ -314,7 +311,7 @@ const SmartBookingAssistant = ({ initialType }) => {
   };
 
   /* ── STEP 3: Compare ── */
-  const Step3 = () => (
+  const renderStep3 = () => (
     <StepShell
       title="Compare Providers"
       subtitle="Select up to 3 providers and compare them side-by-side"
@@ -354,7 +351,7 @@ const SmartBookingAssistant = ({ initialType }) => {
   );
 
   /* ── STEP 4: Book ── */
-  const Step4 = () => (
+  const renderStep4 = () => (
     <StepShell
       title="Ready to Book?"
       subtitle="Choose a provider and confirm your booking"
@@ -384,17 +381,18 @@ const SmartBookingAssistant = ({ initialType }) => {
     </StepShell>
   );
 
-  const STEPS = [Step0, Step1, Step2, Step3, Step4];
-  const CurrentStep = STEPS[step];
-
   return (
     <div ref={topRef} className="scroll-mt-20">
       {/* Progress bar */}
       <StepProgressBar currentStep={step} onStepClick={setStep} />
 
       {/* Step content */}
-      <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 md:p-8">
-        <CurrentStep />
+      <div className="bg-white rounded-2xl border border-slate-100 p-6 md:p-8 shadow-xs">
+        {step === 0 && renderStep0()}
+        {step === 1 && renderStep1()}
+        {step === 2 && renderStep2()}
+        {step === 3 && renderStep3()}
+        {step === 4 && renderStep4()}
       </div>
 
       {/* Booking modal */}

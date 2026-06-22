@@ -1,6 +1,5 @@
 import { IoLocationOutline, IoMailOutline, IoCallOutline,
-         IoLogoFacebook, IoLogoTwitter, IoLogoLinkedin, IoLogoInstagram,
-         IoHeartOutline } from 'react-icons/io5';
+         IoLogoFacebook, IoLogoTwitter, IoLogoLinkedin, IoLogoInstagram } from 'react-icons/io5';
 import { navigationMenu } from '../data/mockData';
 
 const Footer = () => {

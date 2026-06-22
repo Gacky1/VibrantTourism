@@ -1,16 +1,19 @@
 import { IoStarOutline, IoStar, IoLogoWhatsapp,
          IoBookmarkOutline, IoAddCircleOutline, IoCheckmarkCircle } from 'react-icons/io5';
 
-const StarRating = ({ rating }) => (
-  <div className="flex items-center gap-0.5">
-    {[1, 2, 3, 4, 5].map(i => (
-      i <= Math.floor(rating)
-        ? <IoStar        key={i} className="w-3.5 h-3.5 text-amber-400" />
-        : <IoStarOutline key={i} className="w-3.5 h-3.5 text-gray-300"  />
-    ))}
-    <span className="text-[11px] font-semibold text-gray-mid ml-1">{rating} ({Math.floor(Math.random() * 100 + 50)})</span>
-  </div>
-);
+const StarRating = ({ rating, name = '' }) => {
+  const reviewsCount = name ? ((name.charCodeAt(0) + name.charCodeAt(name.length - 1)) * 3) % 120 + 45 : 75;
+  return (
+    <div className="flex items-center gap-0.5">
+      {[1, 2, 3, 4, 5].map(i => (
+        i <= Math.floor(rating)
+          ? <IoStar        key={i} className="w-3.5 h-3.5 text-amber-400" />
+          : <IoStarOutline key={i} className="w-3.5 h-3.5 text-gray-300"  />
+      ))}
+      <span className="text-[11px] font-semibold text-gray-mid ml-1">{rating} ({reviewsCount})</span>
+    </div>
+  );
+};
 
 const ProviderCard = ({ provider, inCompare, onToggleCompare, onBook, onDetails }) => (
   <div className={`group bg-white rounded-2xl border overflow-hidden transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 ${
@@ -51,7 +54,7 @@ const ProviderCard = ({ provider, inCompare, onToggleCompare, onBook, onDetails 
       <h3 className="text-[15px] font-bold text-gray-dark mb-1 group-hover:text-secondary transition-colors duration-150">
         {provider.name}
       </h3>
-      <StarRating rating={provider.rating} />
+      <StarRating rating={provider.rating} name={provider.name} />
 
       {/* Tags */}
       <div className="flex flex-wrap gap-1.5 mt-2.5 mb-3">

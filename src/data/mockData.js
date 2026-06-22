@@ -1,6 +1,6 @@
 export const navigationMenu = [
   { id: 'home', label: 'HOME', href: '/' },
-  { id: 'destination', label: 'DESTINATION', href: '/destination' },
+  { id: 'destination', label: 'DESTINATION', href: '/destinations' },
   { id: 'industry', label: 'INDUSTRY', href: '/industry' },
   { id: 'education', label: 'EDUCATION', href: '/education' },
   { id: 'skill-education', label: 'SKILL EDUCATION', href: '/skill-education' },

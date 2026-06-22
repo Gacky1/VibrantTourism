@@ -44,7 +44,7 @@ const Navbar = ({ activeRoute = '/' }) => {
                   Vibrant Tourism Council
                 </span>
                 <span className="text-[10px] font-semibold text-secondary uppercase tracking-widest mt-0.5">
-                  VTC — Empowering India
+                  Vibrant पर्यटन परिषद
                 </span>
               </div>
             </a>

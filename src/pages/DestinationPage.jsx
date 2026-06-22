@@ -34,12 +34,10 @@ const SectionHead = ({ label, title }) => (
 );
 
 const DestinationPage = () => {
-  const [initialType, setInitialType] = useState(null);
-
-  useEffect(() => {
+  const [initialType] = useState(() => {
     const p = new URLSearchParams(window.location.search).get('type');
-    if (p && tourismCategories[p]) setInitialType(p);
-  }, []);
+    return p && tourismCategories[p] ? p : null;
+  });
 
   const barData = [
     { name: 'GDP %',    value: 9.5  },

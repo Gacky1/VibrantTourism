@@ -1,6 +1,16 @@
 import { useState } from 'react';
 import { IoSendOutline, IoAttachOutline, IoCheckmarkCircleOutline } from 'react-icons/io5';
 
+const Field = ({ label, children }) => (
+  <div className="group/field">
+    <label className="block text-[11px] font-semibold text-gray-mid uppercase tracking-wider mb-1.5
+      group-focus-within/field:text-secondary transition-colors duration-150">
+      {label}
+    </label>
+    {children}
+  </div>
+);
+
 const ContactForm = () => {
   const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '', file: null });
   const [submitted, setSubmitted] = useState(false);
@@ -18,16 +28,6 @@ const ContactForm = () => {
       setFormData({ name: '', email: '', subject: '', message: '', file: null });
     }, 3000);
   };
-
-  const Field = ({ label, children }) => (
-    <div className="group/field">
-      <label className="block text-[11px] font-semibold text-gray-mid uppercase tracking-wider mb-1.5
-        group-focus-within/field:text-secondary transition-colors duration-150">
-        {label}
-      </label>
-      {children}
-    </div>
-  );
 
   return (
     <form onSubmit={handleSubmit} className="card p-8">

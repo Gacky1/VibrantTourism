@@ -370,3 +370,30 @@ export const stateDetails = {
     bestTime: 'Mar – Jun, Sep – Nov',
   },
 };
+
+export const RegionsData = {
+  north: {
+    label: 'North',
+    states: ['Chandigarh', 'Delhi', 'Haryana', 'Himachal Pradesh', 'Jammu and Kashmir', 'Ladakh', 'Punjab', 'Rajasthan', 'Uttar Pradesh', 'Uttarakhand']
+  },
+  northEast: {
+    label: 'North East',
+    states: ['Arunachal Pradesh', 'Assam', 'Manipur', 'Meghalaya', 'Mizoram', 'Nagaland', 'Sikkim', 'Tripura']
+  },
+  east: {
+    label: 'East',
+    states: ['Andaman and Nicobar Islands', 'Bihar', 'Jharkhand', 'Odisha', 'West Bengal']
+  },
+  central: {
+    label: 'Central',
+    states: ['Chhattisgarh', 'Madhya Pradesh']
+  },
+  west: {
+    label: 'West',
+    states: ['Dadra and Nagar Haveli and Daman and Diu', 'Goa', 'Gujarat', 'Maharashtra']
+  },
+  south: {
+    label: 'South',
+    states: ['Andhra Pradesh', 'Karnataka', 'Kerala', 'Lakshadweep', 'Puducherry', 'Tamil Nadu', 'Telangana']
+  }
+};

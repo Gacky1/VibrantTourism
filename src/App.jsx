@@ -5,7 +5,7 @@ import Footer from './components/Footer';
 // Pages
 import HomePage from './pages/HomePage';
 import IndustryPage from './pages/IndustryPage';
-import DestinationPage from './pages/DestinationPage';
+import DestinationsExplorerPage from './pages/DestinationsExplorerPage';
 import EducationPage from './pages/EducationPage';
 import SkillEducationPage from './pages/SkillEducationPage';
 import UpskillingPage from './pages/UpskillingPage';
@@ -24,7 +24,8 @@ function App() {
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/destination" element={<DestinationPage />} />
+            <Route path="/destination" element={<DestinationsExplorerPage />} />
+            <Route path="/destinations" element={<DestinationsExplorerPage />} />
             <Route path="/industry" element={<IndustryPage />} />
             <Route path="/education" element={<EducationPage />} />
             <Route path="/skill-education" element={<SkillEducationPage />} />

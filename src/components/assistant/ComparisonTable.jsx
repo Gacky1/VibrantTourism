@@ -1,8 +1,7 @@
 import { IoStar, IoCheckmarkCircle, IoCloseCircleOutline,
          IoBookmarkOutline, IoLogoWhatsapp, IoTrashOutline } from 'react-icons/io5';
 
-const ALL_FACILITIES = ['Free WiFi', 'Restaurant', 'Spa', 'Pool', 'Parking', 'Safari Desk',
-                        'Bonfire', 'Guided Tours', 'Pickup & Drop', 'Meals', 'Transport'];
+
 
 const StarRow = ({ rating }) => (
   <div className="flex items-center gap-0.5">
