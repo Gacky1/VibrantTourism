@@ -121,6 +121,17 @@
   .form-input:focus {
     box-shadow: 0 0 0 3px rgba(37,99,235,0.12);
   }
+  .form-input::placeholder {
+    @apply text-gray-400;
+  }
+
+  /* ═══ Select dropdown fix ═══ */
+  select.form-input {
+    background-image: none;
+  }
+  select.form-input option {
+    @apply py-2 text-sm;
+  }
 
   /* ═══ Tags ═══ */
   .tag {

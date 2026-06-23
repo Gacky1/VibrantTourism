@@ -373,7 +373,7 @@ const HomePage = () => {
     <div className="bg-white min-h-screen overflow-x-hidden">
 
       {/* ── HERO SECTION WITH FULL-BLEED SLIDER (Value Delivery Centric) ── */}
-      <section className="relative w-full min-h-screen bg-black overflow-hidden flex items-center justify-center pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+      <section className="relative w-full min-h-[85vh] bg-black overflow-hidden flex items-center justify-center pt-28 pb-28 px-4 sm:px-6 lg:px-8">
         
         {/* Background Image Slides with Cross-Fade */}
         <div className="absolute inset-0 z-0 select-none pointer-events-none">
@@ -414,25 +414,25 @@ const HomePage = () => {
         <div className="relative z-20 max-w-4xl w-full text-center flex flex-col items-center justify-center select-none px-4">
           
           {/* Badge */}
-          <span className="inline-block text-[10px] sm:text-[11px] font-extrabold uppercase tracking-[0.25em] text-amber-300 mb-6 bg-white/10 backdrop-blur-md px-5 py-2 rounded-full border border-white/15 animate-fade-in shadow-lg">
+          <span className="inline-block text-[10px] sm:text-[11px] font-extrabold uppercase tracking-[0.25em] text-amber-300 mb-4 bg-white/10 backdrop-blur-md px-5 py-2 rounded-full border border-white/15 animate-fade-in shadow-lg">
             Value Delivery Ecosystem
           </span>
 
           {/* Title */}
           <h1 
-            className="text-white text-4xl sm:text-6xl md:text-7xl lg:text-[76px] font-black uppercase tracking-wider leading-[1.08] drop-shadow-[0_4px_16px_rgba(0,0,0,0.5)] font-sans animate-fade-up"
+            className="text-white text-2xl sm:text-4xl md:text-5xl lg:text-[52px] font-black uppercase tracking-wider leading-[1.12] drop-shadow-[0_4px_16px_rgba(0,0,0,0.5)] font-sans animate-fade-up"
             style={{ textShadow: '0 4px 24px rgba(0,0,0,0.5)' }}
           >
             Empowering Careers.<br />Scaling Businesses.<br />Transforming Tourism.
           </h1>
 
           {/* Description */}
-          <p className="text-white/85 font-medium text-sm sm:text-base md:text-[16.5px] mt-6 tracking-wide font-sans drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)] max-w-2xl mx-auto leading-relaxed animate-fade-up anim-delay-1">
+          <p className="text-white/85 font-medium text-xs sm:text-sm md:text-[15px] mt-4 tracking-wide font-sans drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)] max-w-2xl mx-auto leading-relaxed animate-fade-up anim-delay-1">
             Vibrant Tourism Council delivers standardized certifications, direct traveler booking tools, and sustainable regional promotion to power India's tourism sector.
           </p>
 
           {/* Slider controls row */}
-          <div className="flex items-center justify-center gap-6 sm:gap-10 text-white text-2xl sm:text-3xl md:text-4xl font-extrabold select-none drop-shadow-[0_3px_10px_rgba(0,0,0,0.6)] mt-8 animate-fade-up anim-delay-2">
+          <div className="flex items-center justify-center gap-6 sm:gap-10 text-white text-2xl sm:text-3xl md:text-4xl font-extrabold select-none drop-shadow-[0_3px_10px_rgba(0,0,0,0.6)] mt-5 animate-fade-up anim-delay-2">
             <button 
               onClick={prevHeroSlide} 
               className="hover:scale-115 hover:text-[#FF0000] active:scale-95 transition-all px-3 py-1 cursor-pointer focus:outline-none"
@@ -458,7 +458,7 @@ const HomePage = () => {
           </p>
 
           {/* Action buttons */}
-          <div className="flex flex-wrap justify-center gap-4 mt-8 animate-fade-up anim-delay-3">
+          <div className="flex flex-wrap justify-center gap-4 mt-5 animate-fade-up anim-delay-3">
             <a href="/destination" className="btn-primary hover:bg-red-700 bg-[#FF0000] text-white border-none py-3.5 px-8 text-xs font-bold uppercase tracking-wider rounded-full shadow-lg transition-transform hover:-translate-y-0.5 active:translate-y-0">
               Explore Destinations <IoArrowForwardOutline className="w-4 h-4 ml-1.5 inline-block" />
             </a>
@@ -468,7 +468,7 @@ const HomePage = () => {
           </div>
 
           {/* Stats Overlay Bar */}
-          <div className="mt-12 inline-flex flex-wrap justify-center animate-fade-up anim-delay-4
+          <div className="mt-6 inline-flex flex-wrap justify-center animate-fade-up anim-delay-4
             divide-x divide-white/15 bg-white/10 backdrop-blur-md
             border border-white/15 rounded-2xl overflow-hidden shadow-2xl max-w-xl mx-auto">
             {[
@@ -476,7 +476,7 @@ const HomePage = () => {
               { value: '40M+ Workforce', label: 'Impacted Sector' },
               { value: '13+ Domains',    label: 'Certified Pathways' },
             ].map((s, i) => (
-              <div key={i} className="px-8 py-4.5 text-center hover:bg-white/5 transition-colors duration-200">
+              <div key={i} className="px-6 py-3.5 text-center hover:bg-white/5 transition-colors duration-200">
                 <div className="text-base md:text-lg font-black text-white leading-none">{s.value}</div>
                 <div className="text-[9px] font-extrabold text-white/60 uppercase tracking-widest mt-1.5">{s.label}</div>
               </div>
@@ -705,15 +705,25 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* ── 9. CTA BAND — Full-width Cinematic Image Background ── */}
-      <section className="section-band py-32 relative">
-        <div
-          className="section-band-bg absolute inset-0"
-          style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1920&h=700&fit=crop")' }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0A2540]/95 via-[#0A2540]/80 to-[#0A2540]/95" />
+      {/* ── 9. CTA BAND — Full-width Cinematic Video Background ── */}
+      <section className="relative py-32 overflow-hidden">
+        {/* Background Video */}
+        <div className="absolute inset-0 z-0">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover scale-105"
+            src="https://assets.mixkit.co/videos/43150/43150-720.mp4"
+            poster="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1920&h=700&fit=crop"
+          />
+        </div>
+        {/* Dark gradient overlay for readability */}
+        <div className="absolute inset-0 z-[1] bg-gradient-to-r from-[#0A2540]/92 via-[#0A2540]/78 to-[#0A2540]/92" />
+        <div className="absolute inset-0 z-[1] bg-gradient-to-b from-black/30 via-transparent to-black/40" />
         
-        <div className="relative z-10 max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 text-center reveal">
+        <div className="relative z-10 max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="max-w-3xl mx-auto bg-white/5 backdrop-blur-xl border border-white/10 rounded-[2.5rem] p-8 sm:p-14 shadow-2xl relative">
             <span className="inline-block text-[10px] font-extrabold uppercase tracking-[0.25em] text-amber-300 mb-4 bg-white/10 px-4 py-1.5 rounded-full border border-white/10 shadow-sm">
               Join the Ecosystem
