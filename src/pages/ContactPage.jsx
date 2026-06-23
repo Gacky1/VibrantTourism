@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import HeroSection from '../components/HeroSection';
 import ContactForm  from '../components/ContactForm';
 import {
@@ -45,7 +46,7 @@ const ContactPage = () => {
         description="Whether you are an institution ready to partner, or an explorer finalising your itineraries, VTC listens and responds."
         imageUrl="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=1920&h=1080&fit=crop"
         primaryCta={<a href="#contact-form" className="btn-primary">Send a Message <IoArrowForwardOutline className="w-4 h-4" /></a>}
-        secondaryCta={<a href="/membership" className="btn-outline">Join Network</a>}
+        secondaryCta={<Link to="/membership" className="btn-outline">Join Network</Link>}
       />
 
       {/* ── Contact info band ── */}

@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import * as IoIcons from 'react-icons/io5';
 import HeroSection from '../components/HeroSection';
 import { IoArrowForwardOutline, IoCheckmarkCircleOutline } from 'react-icons/io5';
@@ -45,7 +46,7 @@ const SkillEducationPage = () => {
         subtitle="Bridging Workforce Capabilities"
         description="Competency-based training programs focusing on practical, hands-on learning rather than purely academic knowledge."
         imageUrl="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1920&h=1080&fit=crop"
-        primaryCta={<a href="/upskilling" className="btn-primary">RPL Upskilling <IoArrowForwardOutline className="w-4 h-4" /></a>}
+        primaryCta={<Link to="/upskilling" className="btn-primary">RPL Upskilling <IoArrowForwardOutline className="w-4 h-4" /></Link>}
         secondaryCta={<a href="#programs" className="btn-outline">Browse Programs</a>}
       />
 
@@ -130,11 +131,10 @@ const SkillEducationPage = () => {
           <p className="text-white/75 text-[15px] max-w-xl mx-auto mb-10 leading-relaxed">
             Get industry-recognised certifications and boost your career in tourism & hospitality.
           </p>
-          <a href="/membership" className="btn-gold">Enroll Now <IoArrowForwardOutline className="w-4 h-4" /></a>
+          <Link to="/membership" className="btn-gold">Enroll Now <IoArrowForwardOutline className="w-4 h-4" /></Link>
         </div>
       </section>
     </div>
   );
 };
-
 export default SkillEducationPage;

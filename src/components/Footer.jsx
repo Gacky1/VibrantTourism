@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { IoLocationOutline, IoMailOutline, IoCallOutline,
          IoLogoFacebook, IoLogoTwitter, IoLogoLinkedin, IoLogoInstagram } from 'react-icons/io5';
 import { navigationMenu } from '../data/mockData';
@@ -27,13 +28,13 @@ const Footer = () => {
 
           {/* Brand */}
           <div>
-            <a href="/" className="inline-block mb-5 group">
+            <Link to="/" className="inline-block mb-5 group">
               <img
                 src="/Logo-White-Bg.png"
                 alt="VTC"
                 className="h-10 w-auto object-contain rounded transition-transform duration-200 group-hover:scale-105"
               />
-            </a>
+            </Link>
             <p className="text-[13px] text-slate-400 leading-relaxed mb-5">
               Connecting tourism stakeholders, empowering communities, and promoting sustainable tourism growth through structured skill education.
             </p>
@@ -59,7 +60,7 @@ const Footer = () => {
             <ul className="space-y-2.5">
               {navigationMenu.slice(0, 5).map((item) => (
                 <li key={item.id}>
-                  <a href={item.href} className="footer-link text-[13px]">{item.label}</a>
+                  <Link to={item.href} className="footer-link text-[13px]">{item.label}</Link>
                 </li>
               ))}
             </ul>
@@ -71,7 +72,7 @@ const Footer = () => {
             <ul className="space-y-2.5">
               {navigationMenu.slice(5).map((item) => (
                 <li key={item.id}>
-                  <a href={item.href} className="footer-link text-[13px]">{item.label}</a>
+                  <Link to={item.href} className="footer-link text-[13px]">{item.label}</Link>
                 </li>
               ))}
             </ul>
@@ -111,5 +112,4 @@ const Footer = () => {
     </footer>
   );
 };
-
 export default Footer;

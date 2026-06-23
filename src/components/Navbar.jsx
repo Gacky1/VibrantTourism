@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { IoMenuOutline, IoCloseOutline } from 'react-icons/io5';
 import { navigationMenu } from '../data/mockData';
 
@@ -9,9 +10,10 @@ const SHORT_LABELS = {
   'CONTACT US':             'CONTACT',
 };
 
-const Navbar = ({ activeRoute = '/' }) => {
+const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { pathname } = useLocation();
 
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 12);
@@ -32,7 +34,7 @@ const Navbar = ({ activeRoute = '/' }) => {
           <div className="flex items-center justify-between h-16">
 
             {/* Logo */}
-            <a href="/" className="flex items-center gap-3 flex-shrink-0 group">
+            <Link to="/" className="flex items-center gap-3 flex-shrink-0 group">
               <img
                 src="/Logo-Transparent.png"
                 alt="VTC Logo"
@@ -47,16 +49,16 @@ const Navbar = ({ activeRoute = '/' }) => {
                   Vibrant पर्यटन परिषद
                 </span>
               </div>
-            </a>
+            </Link>
 
             {/* Desktop CTA */}
             <div className="hidden lg:flex items-center gap-3">
-              <a href="/contact" className="text-[11px] font-semibold text-gray-mid hover:text-secondary transition-colors duration-150 whitespace-nowrap">
+              <Link to="/contact" className="text-[11px] font-semibold text-gray-mid hover:text-secondary transition-colors duration-150 whitespace-nowrap">
                 Contact Us
-              </a>
-              <a href="/membership" className="btn-primary text-[11px] px-5 py-2.5 whitespace-nowrap">
+              </Link>
+              <Link to="/membership" className="btn-primary text-[11px] px-5 py-2.5 whitespace-nowrap">
                 Join Network
-              </a>
+              </Link>
             </div>
 
             {/* Mobile toggle */}
@@ -80,11 +82,11 @@ const Navbar = ({ activeRoute = '/' }) => {
           <div className="flex items-center justify-center gap-0.5 h-10">
             {navigationMenu.map((item) => {
               const label = SHORT_LABELS[item.label] ?? item.label;
-              const isActive = activeRoute === item.href;
+              const isActive = pathname === item.href;
               return (
-                <a
+                <Link
                   key={item.id}
-                  href={item.href}
+                  to={item.href}
                   className={`
                     relative whitespace-nowrap px-3 py-1.5 text-[10.5px] font-bold uppercase tracking-wide
                     rounded-md transition-colors duration-150 group
@@ -99,7 +101,7 @@ const Navbar = ({ activeRoute = '/' }) => {
                   {isActive && (
                     <span className="absolute bottom-0 left-3 right-3 h-0.5 bg-secondary rounded-full" />
                   )}
-                </a>
+                </Link>
               );
             })}
           </div>
@@ -111,23 +113,23 @@ const Navbar = ({ activeRoute = '/' }) => {
         <div className="lg:hidden border-t border-gray-100 bg-white shadow-xl mobile-menu-enter">
           <div className="max-w-[1280px] mx-auto px-4 py-3 space-y-0.5">
             {navigationMenu.map((item) => (
-              <a
+              <Link
                 key={item.id}
-                href={item.href}
+                to={item.href}
                 onClick={() => setMobileOpen(false)}
                 className={`block px-4 py-2.5 text-sm font-semibold rounded-xl transition-colors duration-150 ${
-                  activeRoute === item.href
+                  pathname === item.href
                     ? 'text-secondary bg-blue-50'
                     : 'text-gray-600 hover:text-secondary hover:bg-slate-50'
                 }`}
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
             <div className="pt-2 pb-1 flex flex-col gap-2">
-              <a href="/membership" className="btn-primary w-full justify-center text-xs py-2.5">
+              <Link to="/membership" onClick={() => setMobileOpen(false)} className="btn-primary w-full justify-center text-xs py-2.5">
                 Join Network
-              </a>
+              </Link>
             </div>
           </div>
         </div>

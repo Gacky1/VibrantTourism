@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import HeroSection from '../components/HeroSection';
 import { IoCheckmarkCircleOutline, IoArrowForwardOutline,
          IoPeopleOutline, IoBriefcaseOutline } from 'react-icons/io5';
@@ -35,7 +36,7 @@ const UpskillingPage = () => {
         subtitle="VTC Upskilling Protocols"
         description="RPL formally recognises skills and knowledge already acquired through years of work experience, elevating careers without restarting."
         imageUrl="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1920&h=1080&fit=crop"
-        primaryCta={<a href="/membership" className="btn-primary">Get Certified <IoArrowForwardOutline className="w-4 h-4" /></a>}
+        primaryCta={<Link to="/membership" className="btn-primary">Get Certified <IoArrowForwardOutline className="w-4 h-4" /></Link>}
         secondaryCta={<a href="#benefits" className="btn-outline">See Benefits</a>}
       />
 
@@ -53,7 +54,7 @@ const UpskillingPage = () => {
                   </li>
                 ))}
               </ul>
-              <a href="/membership" className="btn-primary">Apply for RPL <IoArrowForwardOutline className="w-4 h-4" /></a>
+              <Link to="/membership" className="btn-primary">Apply for RPL <IoArrowForwardOutline className="w-4 h-4" /></Link>
             </div>
 
             {/* Image collage */}
@@ -139,11 +140,10 @@ const UpskillingPage = () => {
           <p className="text-white/75 text-[15px] max-w-xl mx-auto mb-10 leading-relaxed">
             Don't start from scratch. Get your existing skills formally recognised and open new career doors.
           </p>
-          <a href="/membership" className="btn-gold">Apply for RPL <IoArrowForwardOutline className="w-4 h-4" /></a>
+          <Link to="/membership" className="btn-gold">Apply for RPL <IoArrowForwardOutline className="w-4 h-4" /></Link>
         </div>
       </section>
     </div>
   );
 };
-
 export default UpskillingPage;

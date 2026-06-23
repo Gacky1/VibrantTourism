@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import HeroSection from '../components/HeroSection';
 import { IoArrowForwardOutline, IoSchoolOutline, IoTimeOutline,
          IoRibbonOutline, IoPeopleOutline } from 'react-icons/io5';
@@ -42,7 +43,7 @@ const EducationPage = () => {
         subtitle="Education & Training Programs"
         description={educationData.introduction}
         imageUrl="https://images.unsplash.com/photo-1499591934245-40b55745b905?q=80&w=1172&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        primaryCta={<a href="/skill-education" className="btn-primary">View Skill Programs <IoArrowForwardOutline className="w-4 h-4" /></a>}
+        primaryCta={<Link to="/skill-education" className="btn-primary">View Skill Programs <IoArrowForwardOutline className="w-4 h-4" /></Link>}
         secondaryCta={<a href="#courses" className="btn-outline">Browse Courses</a>}
       />
 
@@ -117,9 +118,9 @@ const EducationPage = () => {
         <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-end justify-between mb-10 reveal">
             <SH eyebrow="Also Explore" title="Related Pathways" center={false} />
-            <a href="/skill-education" className="hidden md:flex items-center gap-1.5 text-[13px] font-semibold text-secondary hover:gap-3 transition-all duration-200 mb-12">
+            <Link to="/skill-education" className="hidden md:flex items-center gap-1.5 text-[13px] font-semibold text-secondary hover:gap-3 transition-all duration-200 mb-12">
               All Programs <IoArrowForwardOutline className="w-4 h-4" />
-            </a>
+            </Link>
           </div>
           <div className="h-scroll-strip reveal">
             {[
@@ -152,8 +153,8 @@ const EducationPage = () => {
             Enroll in our certified programs and build a career in India's fastest-growing tourism sector.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <a href="/skill-education" className="btn-gold">Skill Programs <IoArrowForwardOutline className="w-4 h-4" /></a>
-            <a href="/upskilling" className="btn-outline">RPL Upskilling</a>
+            <Link to="/skill-education" className="btn-gold">Skill Programs <IoArrowForwardOutline className="w-4 h-4" /></Link>
+            <Link to="/upskilling" className="btn-outline">RPL Upskilling</Link>
           </div>
         </div>
       </section>

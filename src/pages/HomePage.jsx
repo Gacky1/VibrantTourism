@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import {
   IoAnalyticsOutline, IoPeopleOutline, IoBriefcaseOutline, IoAirplaneOutline,
   IoArrowForwardOutline, IoLeafOutline, IoHeartOutline, IoTelescopeOutline,
@@ -84,7 +85,7 @@ const StatCard = ({ value, suffix, label, Icon }) => {
 
 /* ─── Experience scroll card ─── */
 const ExpCard = ({ image, title, tag, Icon, href }) => (
-  <a href={href}
+  <Link to={href}
     className="img-card group flex-shrink-0 relative rounded-3xl overflow-hidden shadow-md border border-slate-150/50"
     style={{ width: '270px', height: '350px' }}>
     <img src={image} alt={title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
@@ -100,7 +101,7 @@ const ExpCard = ({ image, title, tag, Icon, href }) => (
         Discover <IoArrowForwardOutline className="w-3.5 h-3.5" />
       </div>
     </div>
-  </a>
+  </Link>
 );
 
 /* ─── Gallery image ─── */
@@ -459,12 +460,12 @@ const HomePage = () => {
 
           {/* Action buttons */}
           <div className="flex flex-wrap justify-center gap-4 mt-5 animate-fade-up anim-delay-3">
-            <a href="/destination" className="btn-primary hover:bg-red-700 bg-[#FF0000] text-white border-none py-3.5 px-8 text-xs font-bold uppercase tracking-wider rounded-full shadow-lg transition-transform hover:-translate-y-0.5 active:translate-y-0">
+            <Link to="/destination" className="btn-primary hover:bg-red-700 bg-[#FF0000] text-white border-none py-3.5 px-8 text-xs font-bold uppercase tracking-wider rounded-full shadow-lg transition-transform hover:-translate-y-0.5 active:translate-y-0">
               Explore Destinations <IoArrowForwardOutline className="w-4 h-4 ml-1.5 inline-block" />
-            </a>
-            <a href="/membership" className="btn-outline border-white text-white hover:bg-white hover:text-black py-3.5 px-8 text-xs font-bold uppercase tracking-wider rounded-full shadow-lg transition-transform hover:-translate-y-0.5 active:translate-y-0 bg-transparent">
+            </Link>
+            <Link to="/membership" className="btn-outline border-white text-white hover:bg-white hover:text-black py-3.5 px-8 text-xs font-bold uppercase tracking-wider rounded-full shadow-lg transition-transform hover:-translate-y-0.5 active:translate-y-0 bg-transparent">
               Partner With VTC
-            </a>
+            </Link>
           </div>
 
           {/* Stats Overlay Bar */}
@@ -525,9 +526,9 @@ const HomePage = () => {
                     </ul>
                   </div>
 
-                  <a href={prop.ctaLink} className="w-full text-center bg-white border border-slate-200 text-gray-dark font-extrabold text-xs uppercase tracking-wider py-3.5 px-6 rounded-2xl hover:border-secondary hover:text-secondary hover:bg-blue-50/30 transition-all duration-200 block">
+                  <Link to={prop.ctaLink} className="w-full text-center bg-white border border-slate-200 text-gray-dark font-extrabold text-xs uppercase tracking-wider py-3.5 px-6 rounded-2xl hover:border-secondary hover:text-secondary hover:bg-blue-50/30 transition-all duration-200 block">
                     {prop.ctaText} &rarr;
-                  </a>
+                  </Link>
                 </div>
               );
             })}
@@ -586,9 +587,9 @@ const HomePage = () => {
                   ))}
                 </ul>
 
-                <a href={activeDeliverable.ctaLink} className="btn-primary hover:bg-[#1d4ed8] bg-[#2563EB] text-white border-none py-3.5 px-8 rounded-2xl font-bold text-xs uppercase tracking-wider shadow-md transition-all inline-flex items-center gap-2 self-start">
+                <Link to={activeDeliverable.ctaLink} className="btn-primary hover:bg-[#1d4ed8] bg-[#2563EB] text-white border-none py-3.5 px-8 rounded-2xl font-bold text-xs uppercase tracking-wider shadow-md transition-all inline-flex items-center gap-2 self-start">
                   {activeDeliverable.ctaText} <IoArrowForwardOutline className="w-4 h-4" />
-                </a>
+                </Link>
               </div>
 
               {/* Right Column: Dynamic zoomable cover image */}
@@ -612,9 +613,9 @@ const HomePage = () => {
         <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 reveal">
             <SH eyebrow="Experiential Pathways" title="Signature Experiences" center={false} />
-            <a href="/destination" className="inline-flex items-center gap-2 text-[12px] font-extrabold text-[#2563EB] hover:text-[#1d4ed8] uppercase tracking-wider transition-colors mb-12">
+            <Link to="/destination" className="inline-flex items-center gap-2 text-[12px] font-extrabold text-[#2563EB] hover:text-[#1d4ed8] uppercase tracking-wider transition-colors mb-12">
               Browse Experiences <IoArrowForwardOutline className="w-4 h-4" />
-            </a>
+            </Link>
           </div>
           <div className="h-scroll-strip reveal">
             {experiences.map((exp, i) => (
@@ -693,9 +694,9 @@ const HomePage = () => {
         <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 reveal">
             <SH eyebrow="Visual India" title="A Glimpse of the Journey" center={false} />
-            <a href="/media" className="inline-flex items-center gap-2 text-[12px] font-extrabold text-[#2563EB] hover:text-[#1d4ed8] uppercase tracking-wider transition-colors mb-12">
+            <Link to="/media" className="inline-flex items-center gap-2 text-[12px] font-extrabold text-[#2563EB] hover:text-[#1d4ed8] uppercase tracking-wider transition-colors mb-12">
               View Gallery <IoArrowForwardOutline className="w-4 h-4 ml-1" />
-            </a>
+            </Link>
           </div>
           <div className="gallery-grid reveal">
             {galleryItems.map((g, i) => (
@@ -735,12 +736,12 @@ const HomePage = () => {
               Whether you are a student launching a career, an MSME scaling operations, or a traveler exploring Incredible India — VTC brings the standard tools you need.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <a href="/skill-education" className="btn-gold hover:bg-[#d97706] bg-accent border-none py-3.5 px-8 text-xs font-bold uppercase tracking-wider rounded-full shadow-lg transition-transform hover:-translate-y-0.5 active:translate-y-0">
+              <Link to="/skill-education" className="btn-gold hover:bg-[#d97706] bg-accent border-none py-3.5 px-8 text-xs font-bold uppercase tracking-wider rounded-full shadow-lg transition-transform hover:-translate-y-0.5 active:translate-y-0">
                 Browse Courses <IoArrowForwardOutline className="w-4 h-4 ml-1.5 inline-block" />
-              </a>
-              <a href="/membership" className="btn-outline border-white/30 text-white hover:bg-white hover:text-black py-3.5 px-8 text-xs font-bold uppercase tracking-wider rounded-full shadow-lg transition-transform hover:-translate-y-0.5 active:translate-y-0 bg-transparent">
+              </Link>
+              <Link to="/membership" className="btn-outline border-white/30 text-white hover:bg-white hover:text-black py-3.5 px-8 text-xs font-bold uppercase tracking-wider rounded-full shadow-lg transition-transform hover:-translate-y-0.5 active:translate-y-0 bg-transparent">
                 Apply for Membership
-              </a>
+              </Link>
             </div>
           </div>
         </div>

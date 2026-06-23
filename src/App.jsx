@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
 
 // Pages
 import HomePage from './pages/HomePage';
@@ -15,12 +16,11 @@ import MediaPage from './pages/MediaPage';
 import ContactPage from './pages/ContactPage';
 
 function App() {
-  const currentPath = window.location.pathname;
-
   return (
     <Router>
+      <ScrollToTop />
       <div className="flex flex-col min-h-screen">
-        <Navbar activeRoute={currentPath} />
+        <Navbar />
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<HomePage />} />

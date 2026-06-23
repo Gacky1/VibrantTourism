@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import HeroSection from '../components/HeroSection';
 import InfoCard    from '../components/InfoCard';
 import MemberCard  from '../components/MemberCard';
@@ -44,8 +45,8 @@ const IndustryPage = () => {
         subtitle="VTC for India"
         description={sectionContent.aboutContent[0]}
         imageUrl="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1920&h=1080&fit=crop"
-        primaryCta={<a href="/membership" className="btn-primary">Join Network <IoArrowForwardOutline className="w-4 h-4" /></a>}
-        secondaryCta={<a href="/destination" className="btn-outline">Explore Destinations</a>}
+        primaryCta={<Link to="/membership" className="btn-primary">Join Network <IoArrowForwardOutline className="w-4 h-4" /></Link>}
+        secondaryCta={<Link to="/destination" className="btn-outline">Explore Destinations</Link>}
       />
 
       {/* ── Split storytelling ── */}
@@ -78,7 +79,7 @@ const IndustryPage = () => {
                   </div>
                 ))}
               </div>
-              <a href="/membership" className="btn-primary">Join the Network <IoArrowForwardOutline className="w-4 h-4" /></a>
+              <Link to="/membership" className="btn-primary">Join the Network <IoArrowForwardOutline className="w-4 h-4" /></Link>
             </div>
           </div>
         </div>
@@ -115,7 +116,7 @@ const IndustryPage = () => {
               </li>
             ))}
           </ul>
-          <a href="/membership" className="btn-gold">Apply for Membership <IoArrowForwardOutline className="w-4 h-4" /></a>
+          <Link to="/membership" className="btn-gold">Apply for Membership <IoArrowForwardOutline className="w-4 h-4" /></Link>
         </div>
       </section>
 
@@ -139,5 +140,4 @@ const IndustryPage = () => {
     </div>
   );
 };
-
 export default IndustryPage;
