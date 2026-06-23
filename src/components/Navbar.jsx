@@ -5,8 +5,6 @@ import { navigationMenu } from '../data/mockData';
 
 /* Shorten labels that are too long for a single nav row */
 const SHORT_LABELS = {
-  'SKILL EDUCATION':        'SKILL EDU',
-  'EMPLOYMENT OPPORTUNITY': 'EMPLOYMENT',
   'CONTACT US':             'CONTACT',
 };
 

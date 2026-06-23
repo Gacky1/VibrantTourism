@@ -83,79 +83,6 @@ const LESSER_KNOWN_WONDERS = [
 
 
 
-const PopularDestinations = [
-  {
-    id: 'heritage',
-    label: 'Heritage Hubs',
-    image: 'https://images.unsplash.com/photo-1548013146-72479768bada?w=600&q=80',
-    list: ['Jaipur Palaces', 'Taj Mahal Agra', 'Hampi Ruins', 'Khajuraho Temples', 'Varanasi Ghats', 'Ajanta & Ellora']
-  },
-  {
-    id: 'beaches',
-    label: 'Beach Retreats',
-    image: 'https://images.unsplash.com/photo-1519046904884-53103b34b206?w=600&q=80',
-    list: ['Baga & Calangute Goa', 'Kovalam Beach Kerala', 'Radhanagar Andaman', 'Puducherry Coast', 'Gokarna Beaches', 'Mahabalipuram']
-  },
-  {
-    id: 'mountains',
-    label: 'Mountain Escapes',
-    image: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=600&q=80',
-    list: ['Shimla & Manali', 'Munnar Hills', 'Darjeeling Slopes', 'Ooty Gardens', 'Leh Ladakh', 'Srinagar Valley']
-  },
-  {
-    id: 'nature',
-    label: 'Nature & Forest',
-    image: 'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=600&q=80',
-    list: ['Coorg Coffee Estates', 'Wayanad Forests', 'Araku Valley', 'Spiti Valley', 'Cherrapunji Falls', 'Athirappilly Falls']
-  }
-];
-
-// Premium detailed region highlight map outlines
-const REGION_MAP_SVGS = {
-  north: (
-    <svg className="w-16 h-16 text-[#38bdf8] mx-auto transition-transform group-hover:scale-105 duration-300" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="1.8">
-      <path d="M50 12 L65 24 L62 38 L55 52 L58 64 L48 70 L34 56 L36 34 L45 22 Z" fill="rgba(56,189,248,0.06)" />
-      <circle cx="50" cy="34" r="3" fill="#FF0000" className="animate-ping" style={{ transformOrigin: '50px 34px' }} />
-      <circle cx="50" cy="34" r="2.5" fill="#FF0000" />
-    </svg>
-  ),
-  northEast: (
-    <svg className="w-16 h-16 text-[#38bdf8] mx-auto transition-transform group-hover:scale-105 duration-300" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="1.8">
-      <path d="M28 46 L46 42 L55 36 L72 32 L84 45 L78 58 L62 55 L50 62 L40 52 Z" fill="rgba(56,189,248,0.06)" />
-      <circle cx="64" cy="45" r="3" fill="#FF0000" className="animate-ping" style={{ transformOrigin: '64px 45px' }} />
-      <circle cx="64" cy="45" r="2.5" fill="#FF0000" />
-    </svg>
-  ),
-  east: (
-    <svg className="w-16 h-16 text-[#38bdf8] mx-auto transition-transform group-hover:scale-105 duration-300" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="1.8">
-      <path d="M40 40 L58 38 L68 45 L74 58 L62 68 L46 62 L44 48 Z" fill="rgba(56,189,248,0.06)" />
-      <circle cx="58" cy="52" r="3" fill="#FF0000" className="animate-ping" style={{ transformOrigin: '58px 52px' }} />
-      <circle cx="58" cy="52" r="2.5" fill="#FF0000" />
-    </svg>
-  ),
-  central: (
-    <svg className="w-16 h-16 text-[#38bdf8] mx-auto transition-transform group-hover:scale-105 duration-300" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="1.8">
-      <path d="M36 48 L56 44 L66 52 L56 68 L40 66 L32 56 Z" fill="rgba(56,189,248,0.06)" />
-      <circle cx="48" cy="56" r="3" fill="#FF0000" className="animate-ping" style={{ transformOrigin: '48px 56px' }} />
-      <circle cx="48" cy="56" r="2.5" fill="#FF0000" />
-    </svg>
-  ),
-  west: (
-    <svg className="w-16 h-16 text-[#38bdf8] mx-auto transition-transform group-hover:scale-105 duration-300" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="1.8">
-      <path d="M20 46 L36 42 L45 52 L36 66 L26 68 L18 56 Z" fill="rgba(56,189,248,0.06)" />
-      <circle cx="28" cy="54" r="3" fill="#FF0000" className="animate-ping" style={{ transformOrigin: '28px 54px' }} />
-      <circle cx="28" cy="54" r="2.5" fill="#FF0000" />
-    </svg>
-  ),
-  south: (
-    <svg className="w-16 h-16 text-[#38bdf8] mx-auto transition-transform group-hover:scale-105 duration-300" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="1.8">
-      <path d="M35 58 L50 60 L45 82 L40 88 L34 76 Z" fill="rgba(56,189,248,0.06)" />
-      <circle cx="42" cy="70" r="3" fill="#FF0000" className="animate-ping" style={{ transformOrigin: '42px 70px' }} />
-      <circle cx="42" cy="70" r="2.5" fill="#FF0000" />
-    </svg>
-  )
-};
-
 const DestinationsExplorerPage = () => {
   const [heroIndex, setHeroIndex] = useState(0);
   const [initialType] = useState(() => {
@@ -175,9 +102,8 @@ const DestinationsExplorerPage = () => {
   ]);
   const [chatInput, setChatInput] = useState('');
 
-  // Tabs states
-  const [activeDirectoryTab, setActiveDirectoryTab] = useState('states');
-  const [showDirectorySection, setShowDirectorySection] = useState(true);
+
+
 
   // Carousel states
   const [wonderIndex, setWonderIndex] = useState(0);
@@ -338,130 +264,8 @@ const DestinationsExplorerPage = () => {
 
       </section>
 
-      {/* ── REGIONAL DIRECTORY & CATEGORY NAVIGATION ── */}
-      {showDirectorySection && (
-        <section className="py-24 bg-white relative border-b border-slate-100 animate-fade-in">
-          
-          {/* Close button inside directory container */}
-          <button 
-            onClick={() => setShowDirectorySection(false)}
-            className="absolute top-6 right-8 text-gray-400 hover:text-[#FF0000] transition-colors p-2 rounded-full hover:bg-slate-100 cursor-pointer z-10"
-            aria-label="Hide Directory"
-            title="Hide Section"
-          >
-            <IoCloseOutline className="w-6 h-6" />
-          </button>
 
-          <div className="max-w-[1200px] mx-auto px-6">
-            
-            {/* Main Tabs Header */}
-            <div className="flex justify-center gap-8 md:gap-12 border-b border-gray-150 pb-4 mb-16 max-w-sm mx-auto">
-              {[
-                { id: 'states', label: 'States and UTs' },
-                { id: 'destinations', label: 'Destinations' }
-              ].map((tab) => (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveDirectoryTab(tab.id)}
-                  className={`text-xs sm:text-sm font-black uppercase tracking-wider pb-3 relative transition-colors cursor-pointer ${
-                    activeDirectoryTab === tab.id 
-                      ? 'text-[#FF0000]' 
-                      : 'text-gray-dark hover:text-red-500'
-                  }`}
-                >
-                  {tab.label}
-                  {activeDirectoryTab === tab.id && (
-                    <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#FF0000] rounded-full animate-scale-in" />
-                  )}
-                </button>
-              ))}
-            </div>
 
-            {/* TAB 1: States and UTs Grid (Whitespace-based directory matching screenshot Image 2) */}
-            {activeDirectoryTab === 'states' && (
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-8 sm:gap-6 anim-fade-in">
-                {Object.keys(RegionsData).map((regionKey) => {
-                  const region = RegionsData[regionKey];
-                  return (
-                    <div key={regionKey} className="flex flex-col items-center text-center">
-                      
-                      {/* SVG Map Illustration Icon outline */}
-                      <div className="h-16 w-full flex items-center justify-center p-2 mb-2">
-                        {REGION_MAP_SVGS[regionKey] || REGION_MAP_SVGS.north}
-                      </div>
-
-                      <h4 className="text-sm font-extrabold uppercase tracking-widest text-[#38bdf8] mb-4">
-                        {region.label}
-                      </h4>
-
-                      <ul className="flex flex-col gap-2.5 w-full">
-                        {region.states.map((state) => (
-                          <li key={state}>
-                            <button
-                              onClick={scrollToAssistant}
-                              className="text-[13px] font-semibold text-gray-mid hover:text-[#FF0000] hover:translate-x-0.5 transition-all duration-150 py-0.5 block w-full text-center cursor-pointer"
-                            >
-                              {state}
-                            </button>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  );
-                })}
-              </div>
-            )}
-
-            {/* TAB 2: Popular Destinations Visual Cards */}
-            {activeDirectoryTab === 'destinations' && (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 anim-fade-in">
-                {PopularDestinations.map((category) => (
-                  <div key={category.id} className="relative rounded-3xl overflow-hidden shadow-md border border-slate-100 hover:border-slate-300 bg-white flex flex-col justify-between h-[360px] group transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
-                    {/* Header Image Header */}
-                    <div className="relative h-24 overflow-hidden">
-                      <img src={category.image} alt={category.label} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                      <div className="absolute inset-0 bg-black/45" />
-                      <h4 className="absolute bottom-3 left-4 text-white text-base font-black tracking-wide uppercase">
-                        {category.label}
-                      </h4>
-                    </div>
-
-                    {/* Destination List Body */}
-                    <div className="p-5 flex-grow flex flex-col justify-start">
-                      <ul className="flex flex-col gap-2">
-                        {category.list.map((dest) => (
-                          <li key={dest} className="group/dest">
-                            <button
-                              onClick={scrollToAssistant}
-                              className="text-xs font-semibold text-gray-mid hover:text-[#FF0000] flex items-center gap-1.5 transition-colors text-left cursor-pointer hover:translate-x-1"
-                            >
-                              <span className="w-1.5 h-1.5 rounded-full bg-slate-300 group-hover/dest:bg-[#FF0000] transition-colors" />
-                              {dest}
-                            </button>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
-
-          </div>
-        </section>
-      )}
-
-      {/* Toggle directory button if hidden */}
-      {!showDirectorySection && (
-        <div className="py-8 text-center bg-slate-50 border-b border-slate-100 animate-fade-in">
-          <button 
-            onClick={() => setShowDirectorySection(true)} 
-            className="text-xs font-bold uppercase tracking-widest text-[#FF0000] border-2 border-[#FF0000] px-6 py-2.5 rounded-full hover:bg-[#FF0000] hover:text-white transition-all cursor-pointer"
-          >
-            Show Regions & States Directory
-          </button>
-        </div>
-      )}
 
       {/* ── LESSER KNOWN WONDERS 3D CAROUSEL SECTION ── */}
       <section className="py-24 bg-slate-50 relative overflow-hidden flex flex-col items-center justify-center min-h-[680px]">

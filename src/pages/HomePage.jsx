@@ -231,7 +231,7 @@ const STAKEHOLDER_VAL_PROPS = [
       { bold: 'Direct Partner Placements', normal: 'Instant hiring pipelines to top hotels, resorts, and tour operators.' }
     ],
     ctaText: 'Browse Course Paths',
-    ctaLink: '/skill-education'
+    ctaLink: '/education'
   },
   {
     id: 'businesses',
@@ -273,7 +273,7 @@ const DELIVERABLES_DATA = {
       'Dedicated wellness & AYUSH tourist specialist tracks'
     ],
     ctaText: 'Browse Courses',
-    ctaLink: '/skill-education',
+    ctaLink: '/education',
     image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80'
   },
   planner: {
@@ -736,7 +736,7 @@ const HomePage = () => {
               Whether you are a student launching a career, an MSME scaling operations, or a traveler exploring Incredible India — VTC brings the standard tools you need.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Link to="/skill-education" className="btn-gold hover:bg-[#d97706] bg-accent border-none py-3.5 px-8 text-xs font-bold uppercase tracking-wider rounded-full shadow-lg transition-transform hover:-translate-y-0.5 active:translate-y-0">
+              <Link to="/education" className="btn-gold hover:bg-[#d97706] bg-accent border-none py-3.5 px-8 text-xs font-bold uppercase tracking-wider rounded-full shadow-lg transition-transform hover:-translate-y-0.5 active:translate-y-0">
                 Browse Courses <IoArrowForwardOutline className="w-4 h-4 ml-1.5 inline-block" />
               </Link>
               <Link to="/membership" className="btn-outline border-white/30 text-white hover:bg-white hover:text-black py-3.5 px-8 text-xs font-bold uppercase tracking-wider rounded-full shadow-lg transition-transform hover:-translate-y-0.5 active:translate-y-0 bg-transparent">

@@ -7,7 +7,7 @@ import {
 } from 'react-icons/io5';
 import { mediaEvents, researchArticles, mediaTestimonials } from '../data/mockData';
 
-const useReveal = () => {
+const useReveal = (activeTab) => {
   useEffect(() => {
     const els = document.querySelectorAll('.reveal');
     const io  = new IntersectionObserver(
@@ -16,7 +16,7 @@ const useReveal = () => {
     );
     els.forEach(el => io.observe(el));
     return () => io.disconnect();
-  }, []);
+  }, [activeTab]);
 };
 
 
@@ -71,8 +71,8 @@ const TestimonialCarousel = ({ items }) => {
 const TABS = ['events', 'articles', 'gallery', 'testimonials'];
 
 const MediaPage = () => {
-  useReveal();
   const [activeTab, setActiveTab] = useState('events');
+  useReveal(activeTab);
   const [lightbox,  setLightbox]  = useState(null);
 
   return (

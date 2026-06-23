@@ -8,7 +8,6 @@ import HomePage from './pages/HomePage';
 import IndustryPage from './pages/IndustryPage';
 import DestinationsExplorerPage from './pages/DestinationsExplorerPage';
 import EducationPage from './pages/EducationPage';
-import SkillEducationPage from './pages/SkillEducationPage';
 import UpskillingPage from './pages/UpskillingPage';
 import EmploymentPage from './pages/EmploymentPage';
 import MembershipPage from './pages/MembershipPage';
@@ -28,7 +27,7 @@ function App() {
             <Route path="/destinations" element={<DestinationsExplorerPage />} />
             <Route path="/industry" element={<IndustryPage />} />
             <Route path="/education" element={<EducationPage />} />
-            <Route path="/skill-education" element={<SkillEducationPage />} />
+            <Route path="/skill-education" element={<EducationPage />} />
             <Route path="/upskilling" element={<UpskillingPage />} />
             <Route path="/employment" element={<EmploymentPage />} />
             <Route path="/membership" element={<MembershipPage />} />
