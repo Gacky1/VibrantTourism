@@ -44,7 +44,7 @@ const Navbar = () => {
                   Vibrant Tourism Council
                 </span>
                 <span className="text-[10px] font-semibold text-secondary uppercase tracking-widest mt-0.5">
-                  Vibrant पर्यटन परिषद
+                  वाइब्रेंट पर्यटन परिषद
                 </span>
               </div>
             </Link>
