@@ -68,7 +68,7 @@ const LESSER_KNOWN_WONDERS = [
     name: 'Majuli Island',
     subtitle: 'The world\'s largest river island.',
     state: 'Assam',
-    image: 'https://images.unsplash.com/photo-1472214222541-d510753a4707?w=1200&q=80',
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSM2wwsFgj9Pnjkkq4HdSaC0Z7ppO2VR68_ydB9frVye7SdO8G8vhsZ85OR&s=10',
     description: 'A vibrant center of Vaishnavite culture, traditional mask-making, and river bio-networks.'
   },
   {
